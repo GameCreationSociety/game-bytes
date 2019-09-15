@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
  *  Talk to the lead if you need something here to change.*/
 public class MinigameLauncherController : UnitySingleton<MinigameLauncherController>
 {
-     [Header("UI Setup")]
+    [Header("UI Setup")]
     [SerializeField] private TextMeshProUGUI MinigameNameText = null;
     [SerializeField] private TextMeshProUGUI CreatorNameText = null;
     [SerializeField] private TextMeshProUGUI MinigameDescriptionText = null;
