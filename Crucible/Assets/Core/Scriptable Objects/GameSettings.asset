@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8627aee03be3e40af78a3b04b1eb9f, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  MinigameLauncherScene:
+    sceneAsset: {fileID: 102900000, guid: 44720dd75ae23bb448cfcb51179a6382, type: 3}
+    scenePath: Assets/Core/Scenes/MinigameLauncher.unity
+  MinigameEndScene:
+    sceneAsset: {fileID: 102900000, guid: 0b4d80be7927bbd49ad4e028d02a7719, type: 3}
+    scenePath: Assets/Core/Scenes/EndScreen.unity
+  AvailableMinigames:
+  - {fileID: 11400000, guid: 67d503c469254d34081b979e9d1d4d46, type: 2}
+  - {fileID: 11400000, guid: fd38740d239bd6a4f8f3b138c374d95e, type: 2}
+  GameEndGraphicsWait: 3
+  WinGraphicsPrefab: {fileID: 3757004447918800238, guid: 0b75b10dfa7586f468171c39b7f0fb01,
+    type: 3}
+  LoseGraphicsPrefab: {fileID: 3757004447918800238, guid: 71052cd9c92457c4589549cf591d171f,
+    type: 3}
+  P1WinGraphicsPrefab: {fileID: 3757004447918800238, guid: 6235b43fddb25874f8615577f17a3c72,
+    type: 3}
+  TieGraphicsPrefab: {fileID: 3757004447918800238, guid: 5769b38e65030c14ebc856a56d709f1e,
+    type: 3}
+  P2WinGraphicsPrefab: {fileID: 3757004447918800238, guid: ba70f74821e7939409fac4a60429defa,
+    type: 3}
+  StartGameTransition: {fileID: 909209366899487215, guid: ed1182ff2220e0e49826db42b1a4517d,
+    type: 3}
