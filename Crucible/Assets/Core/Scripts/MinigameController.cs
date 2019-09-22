@@ -74,6 +74,12 @@ public class MinigameController : UnitySingleton<MinigameController>
             CurrentGamemode = DEBUG_GamemodeToTest;
         }
 
+        if(CurrentGamemode != MinigameGamemodeTypes.TWOPLAYERVS)
+        {
+            if(Score1Text) Score1Text.enabled = false;
+            if(Score2Text) Score2Text.enabled = false;
+        }
+
         Instantiate(Settings.StartGameTransition);
     }
 

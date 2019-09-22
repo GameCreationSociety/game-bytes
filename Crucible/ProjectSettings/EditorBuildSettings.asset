@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Minigames/MeteorMasher/MeteorMasher.unity
     guid: 7894d01622d3e8544b617f353661c4e9
   - enabled: 1
-    path: Assets/Minigames/TestGame/TestMinigame.unity
+    path: Assets/Minigames/Template/Scene_Template.unity
     guid: da97d35142268994f97934479625f405
   - enabled: 1
     path: Assets/Core/Scenes/EndScreen.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Shotpot/Shotpot_Main.unity
     guid: 2c6974ac6aca6ea4f9aee7d98384362e
+  - enabled: 1
+    path: Assets/Minigames/Test/TestMinigame.unity
+    guid: fb03df26f001bfa43a4168ffa241461d
   m_configObjects: {}

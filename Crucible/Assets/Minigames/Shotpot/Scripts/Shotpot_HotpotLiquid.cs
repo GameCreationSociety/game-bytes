@@ -9,7 +9,7 @@ public class Shotpot_HotpotLiquid : MonoBehaviour
     [SerializeField] float velocitySlowdown = 0.1f;
     [SerializeField] float drag = 0.2f;
     [SerializeField] float angularDrag = 0.2f;
-    [SerializeField] AudioClip[] splashSounds;
+    [SerializeField] AudioClip[] splashSounds = null;
     public int piecesInLiquid; 
     private Collider2D col;
 

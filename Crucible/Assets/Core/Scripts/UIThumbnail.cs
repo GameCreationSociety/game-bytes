@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class UIThumbnail : MonoBehaviour
 {
-    [SerializeField] private Image ThumbnailImage;
-    [SerializeField] private UIThumbnailSpawner Spawner;
-    [SerializeField] private float MoveDistance;
+    [SerializeField] private Image ThumbnailImage = null;
+    [SerializeField] private UIThumbnailSpawner Spawner = null;
+    [SerializeField] private float MoveDistance = 0.0f;
     [SerializeField] private float MoveSpeed = 5.0f;
-    private RectTransform RectTransformComponent;
+    private RectTransform RectTransformComponent = null;
 
     void Start()
     {

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Shotpot_HandMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float maxRot;
-    [HideInInspector] public Rigidbody2D rbody;
-    private Shotpot_Hand hand;
+    [SerializeField] private float moveSpeed= 0.0f;
+    [SerializeField] private float maxRot= 0.0f;
+    [HideInInspector] public Rigidbody2D rbody = null;
+    private Shotpot_Hand hand = null;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,8 @@ public class Shotpot_HandMovement : MonoBehaviour
         }
         else
         {
-            float HorizontalAxis = MinigameInputHelper.GetHorizontalValue(hand.player);
-            float VerticalAxis = MinigameInputHelper.GetVerticalValue(hand.player);
+            float HorizontalAxis = MinigameInputHelper.GetHorizontalAxis(hand.player);
+            float VerticalAxis = MinigameInputHelper.GetVerticalAxis(hand.player);
             rbody.MovePosition(rbody.transform.position + new Vector3(HorizontalAxis, VerticalAxis) * Time.deltaTime * moveSpeed);
             rbody.MoveRotation(Mathf.Lerp(rbody.rotation, maxRot * -HorizontalAxis, 0.1f));
         }

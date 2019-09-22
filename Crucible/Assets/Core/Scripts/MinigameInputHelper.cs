@@ -6,13 +6,13 @@ public class MinigameInputHelper : MonoBehaviour
 {
     static float AxisDeadCutoff = 0.1f;
 
-    static public float GetHorizontalValue(int PlayerNumber)
+    static public float GetHorizontalAxis(int PlayerNumber)
     {
         float AxisVal = (PlayerNumber == 1 ? Input.GetAxis("P1_Horizontal") : Input.GetAxis("P2_Horizontal"));
         return (Mathf.Abs(AxisVal) > AxisDeadCutoff ? AxisVal : 0.0f); 
     }
 
-    static public float GetVerticalValue(int PlayerNumber)
+    static public float GetVerticalAxis(int PlayerNumber)
     {
         float AxisVal = (PlayerNumber == 1 ? Input.GetAxis("P1_Vertical") : Input.GetAxis("P2_Vertical"));
         return (Mathf.Abs(AxisVal) > AxisDeadCutoff ? AxisVal : 0.0f); 

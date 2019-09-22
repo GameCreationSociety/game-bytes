@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Shotpot_Hand : MonoBehaviour
 {
-    [SerializeField] Color burnColor;
-    [SerializeField] float burnTime;
-    [SerializeField] float centerX;
-    [SerializeField] float maxX;
-    [SerializeField] float minMass;
-    [SerializeField] float maxMass;
+    [SerializeField] Color burnColor = new Color();
+    [SerializeField] float burnTime= 0.0f;
+    [SerializeField] float centerX= 0.0f;
+    [SerializeField] float maxX = 0.0f;
+    [SerializeField] float minMass= 0.0f;
+    [SerializeField] float maxMass= 0.0f;
 
     private float currentBurnTime;
     private SpriteRenderer[] sprites;

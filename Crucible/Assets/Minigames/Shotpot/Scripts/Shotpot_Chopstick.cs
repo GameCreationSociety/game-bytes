@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Shotpot_Chopstick : MonoBehaviour
 {
-    [SerializeField] float rotSpeed;
-    [SerializeField] float rotLimit;
-    [SerializeField] float startRotLimit;
-    float startRot;
+    [SerializeField] float rotSpeed= 0.0f;
+    [SerializeField] float rotLimit= 0.0f;
+    [SerializeField] float startRotLimit= 0.0f;
+    float startRot= 0.0f;
     private Rigidbody2D rbody;
     private Shotpot_Hand hand;
 

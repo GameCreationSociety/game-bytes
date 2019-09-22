@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Core/Scenes/MainMenu.unity
+- path: Assets/Minigames/MeteorMasher/Scene_MeteorMasher.unity
   isLoaded: 1
   isActive: 1

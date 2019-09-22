@@ -21,9 +21,9 @@ public struct FoodWave
 public class Shotpot_FoodSpawner : MonoBehaviour
 {
     [Header("Food Settings")]
-    [SerializeField] private FoodItem[] foodsToSpawn;
-    [SerializeField] private FoodWave[] foodWaves;
-    [SerializeField] private Collider2D spawnZone;
+    [SerializeField] private FoodItem[] foodsToSpawn = null;
+    [SerializeField] private FoodWave[] foodWaves = null;
+    [SerializeField] private Collider2D spawnZone = null;
     private int waveCounter = 0;
 
     IEnumerator SpawnFoodos()

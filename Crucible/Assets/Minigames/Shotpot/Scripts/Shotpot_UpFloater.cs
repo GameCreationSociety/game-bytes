@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Shotpot_UpFloater : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] float acceleration;
-    [SerializeField] float upRandomMod;
+    [SerializeField] float speed = 0.0f;
+    [SerializeField] float acceleration = 0.0f;
+    [SerializeField] float upRandomMod = 0.0f;
 
 	// Use this for initialization
 	void Start ()

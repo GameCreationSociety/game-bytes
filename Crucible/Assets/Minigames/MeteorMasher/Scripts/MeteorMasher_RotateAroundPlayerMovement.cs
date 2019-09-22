@@ -39,7 +39,7 @@ public class MeteorMasher_RotateAroundPlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, CurrentAngleDegrees);
 
         // Update the Current Angle to move to target direction
-        Vector2 TargetVector = new Vector2(MinigameInputHelper.GetHorizontalValue(PlayerNum), MinigameInputHelper.GetVerticalValue(PlayerNum)).normalized;
+        Vector2 TargetVector = new Vector2(MinigameInputHelper.GetHorizontalAxis(PlayerNum), MinigameInputHelper.GetVerticalAxis(PlayerNum)).normalized;
         if (Mathf.Abs(TargetVector.x) > 0 || Mathf.Abs(TargetVector.y) > 0)
         {
             float TargetAngleDegrees = Mathf.Rad2Deg * Mathf.Atan2(TargetVector.y, TargetVector.x);
