@@ -56,5 +56,5 @@ public class GameController : UnitySingleton<GameController>
     public void Start2PlayerVsGame()
     {
         StartGame(MinigameGamemodeTypes.TWOPLAYERVS);
-    } 
+    }
 }
