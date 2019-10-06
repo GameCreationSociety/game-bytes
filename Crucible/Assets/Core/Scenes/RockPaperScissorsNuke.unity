@@ -1672,7 +1672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f2ecfd92d5640d9ae0c5973e5f03a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RPSNChoiceWaitTime: 10
+  RPSNChoiceWaitTime: 5
   winnerChoiceDisplayTime: 3
   chooseMinigameWaitTime: 10
   p1Choice: 1
@@ -1683,10 +1683,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd38740d239bd6a4f8f3b138c374d95e, type: 2}
   effectsSource: {fileID: 0}
   choiceSelected: {fileID: 0}
+  battleGraphics: {fileID: 1316516312}
+  chooseMinigameGraphics: {fileID: 1548301701}
   p1ChoiceGUI: {fileID: 1209084026}
   p2ChoiceGUI: {fileID: 1991096901}
   winText: {fileID: 339005684}
-  countdownTimer: {fileID: 172699309}
+  RPSNcountdownTimer: {fileID: 172699309}
+  chooseMinigameTimer: {fileID: 1168479785}
 --- !u!4 &1161356654
 Transform:
   m_ObjectHideFlags: 0

@@ -37,10 +37,13 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     [SerializeField] private AudioClip choiceSelected;
 
     [Header("Graphics")]
+    [SerializeField] GameObject battleGraphics;
+    [SerializeField] GameObject chooseMinigameGraphics;
     [SerializeField] TextMeshProUGUI p1ChoiceGUI;
     [SerializeField] TextMeshProUGUI p2ChoiceGUI;
     [SerializeField] TextMeshProUGUI winText;
-    [SerializeField] TextMeshProUGUI countdownTimer;
+    [SerializeField] TextMeshProUGUI RPSNcountdownTimer;
+    [SerializeField] TextMeshProUGUI chooseMinigameTimer;
 
     
     void InitRockPaperScissorsNuke()
@@ -48,7 +51,9 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         p1Choice = choice.NONE;
         p2Choice = choice.NONE;
         // init the graphics
-        winText.GetComponent<TextMeshProUGUI>().enabled = false;
+        winText.enabled = false;
+        p1ChoiceGUI.enabled = false;
+        p2ChoiceGUI.enabled = false;
     }
 
 
@@ -69,11 +74,14 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         return false;
     }
 
-
     void DisplayBattleOutcome(battleOutcome outcome)
     {
         Debug.Log("Displaying the battle outcome");
-
+        p1ChoiceGUI.SetText(p1Choice.ToString());
+        p2ChoiceGUI.SetText(p2Choice.ToString());
+        p1ChoiceGUI.enabled = true;
+        p2ChoiceGUI.enabled = true;
+        winText.enabled = true;
         switch (outcome)
         {
             case battleOutcome.INVALID:
@@ -96,42 +104,68 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         
     }
 
-
+    // close the battle graphics and open the "choose minigame" graphics
+    void OpenChooseMinigameGraphics()
+    {
+        battleGraphics.SetActive(false);
+        chooseMinigameGraphics.SetActive(true);
+    }
+    // wait for the players to choose their move, display results from battle
     IEnumerator WaitForChoices()
     {
-        float counter = RPSNChoiceWaitTime;
-        while (!BothPlayersReady() && counter > 0)
+        // wait for players to select their choices
+        float choiceCounter = RPSNChoiceWaitTime;
+        while (!BothPlayersReady() && choiceCounter > 1)
         {
-            counter -= 0.01f;
+            choiceCounter -= 0.01f;
             // update the counter
-            countdownTimer.SetText(Mathf.FloorToInt(counter).ToString());
+            RPSNcountdownTimer.SetText(Mathf.FloorToInt(choiceCounter).ToString());
             yield return new WaitForSeconds(0.01f);
         }
         battleOutcome result = Battle();
+
+        // display the results of their choices
         DisplayBattleOutcome(result);
-        
+        float displayOutcomeCounter = winnerChoiceDisplayTime;
+        while (displayOutcomeCounter > 1)
+        {
+            displayOutcomeCounter -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        // have the player who won the battle select the next stage
+        StartCoroutine("ChooseMinigame");
     }
 
     // Let the player who won choose the minigame
     IEnumerator ChooseMinigame()
     {
-        float counter = chooseMinigameWaitTime;
-        while (chooseMinigameWaitTime > 0)
+        OpenChooseMinigameGraphics();
+        float choiceCounter = chooseMinigameWaitTime;
+        List<MinigameInfo> MinigamesToChooseFrom = RandomMinigamesSubset();
+        MinigameInfo selected = null;
+        while (selected == null && choiceCounter > 1)
         {
+            choiceCounter -= 0.01f;
+            chooseMinigameTimer.SetText(Mathf.FloorToInt(choiceCounter).ToString());
             yield return new WaitForSeconds(0.01f);
         }
+        // if the player has not selected a minigame by the time runs out, select a random minigame
+        if (selected == null)
+        {
+            selected = MinigamesToChooseFrom[Mathf.FloorToInt(Random.Range(0, MinigamesToChooseFrom.Count))];
+        }
+        SceneTransitionController.Instance.TransitionToScene("MinigameLauncher");
     }
 
-
-
-    // randomly chooses rock, paper or scissoras
+    // randomly chooses rock, paper or scissors
     choice RandomChoice()
     {
         return (choice)Random.Range(0, 3); 
     }
 
 
-    // returns who wins the rock paper scissors battle
+    // returns the result rock paper scissors nuke battle
     battleOutcome Battle()
     {
         // if either of the players do not have a choice, select a random choice
@@ -232,9 +266,9 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         {
             // generate a new random index
             int randomInt1 = Mathf.RoundToInt(Random.Range(0, possibleChoiceCopy.Count));
-            // add the random element to the result list
+            // add the random minigame to the result list
             result.Add(possibleChoiceCopy[randomInt1]);
-            // remove the element that we added to result from possibleChoiceCopy
+            // remove the minigame that we added to result from possibleChoiceCopy (this ensures we dont have repeats)
             possibleChoiceCopy.RemoveAt(randomInt1);
             
             // if we run out of possible minigames to add, then allow repeats
@@ -243,7 +277,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
                 while (result.Count < numberOfMinigamesToChooseFrom)
                 {
                     int randomInt2 = Mathf.RoundToInt(Random.Range(0, allPossibleMinigames.Count));
-                    // add the random element to the result list
+                    // add the random minigame to the result list
                     result.Add(allPossibleMinigames[randomInt2]);
                 }
             }
