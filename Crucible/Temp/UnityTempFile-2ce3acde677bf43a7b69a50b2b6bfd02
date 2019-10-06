@@ -345,6 +345,7 @@
 "Assets/Core/External Libraries/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/Core/External Libraries/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/Core/External Libraries/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/Core/Scripts/BoardGameData.cs"
 "Assets/Core/Scripts/DestroyAfterTime.cs"
 "Assets/Core/Scripts/EndScreenController.cs"
 "Assets/Core/Scripts/GameController.cs"

@@ -355,6 +355,7 @@
 "Assets/Core/Scripts/MinigameInputHelper.cs"
 "Assets/Core/Scripts/MinigameLauncherController.cs"
 "Assets/Core/Scripts/MinigamePlayState.cs"
+"Assets/Core/Scripts/RockPaperScissorsNukeController.cs"
 "Assets/Core/Scripts/SceneTransitionController.cs"
 "Assets/Core/Scripts/UIMoveUp.cs"
 "Assets/Core/Scripts/UISwitcher.cs"

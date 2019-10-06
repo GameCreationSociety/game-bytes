@@ -5,6 +5,14 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+
+Author: George Whitfield
+gwhitfie@andrew.cmu.edu
+September 15, 2019
+
+If you are not the lead for the minigame project please DO NOT MODIFY this file.
+*  Talk to the lead if you need something here to change.*/
 
 public class EndScreenController : UnitySingleton<EndScreenController>
 {
