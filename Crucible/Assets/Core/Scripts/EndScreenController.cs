@@ -31,13 +31,6 @@ public class EndScreenController : UnitySingleton<EndScreenController>
         PopulateUI(true); // populate in debug mode
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
     // If one player won, return player name
     // If both players won, return 'You both win!'
     // If both players lost more than 50% of games played, return 'Better luck next time!'
