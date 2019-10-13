@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 1
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -87,7 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -150,6 +158,7 @@ MonoBehaviour:
   DEBUG_GamemodeToTest: 1
   CurrentGamemode: 0
   MinigameEnded: 0
+  TimerPaused: 0
 --- !u!4 &25541380
 Transform:
   m_ObjectHideFlags: 0
@@ -219,8 +228,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 60
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b3269e5510d6fd140b0276da389ccb82, type: 2}
@@ -258,7 +265,6 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 514
-  m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -285,6 +291,7 @@ MonoBehaviour:
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
@@ -299,12 +306,9 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
-  m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -367,6 +371,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -448,6 +453,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -480,7 +486,7 @@ Transform:
   m_GameObject: {fileID: 361903910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.2953641}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.8}
   m_Children:
   - {fileID: 646794013}
   m_Father: {fileID: 0}
@@ -499,9 +505,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.04957477, y: 0}
   serializedVersion: 2
-  m_Radius: 1.12
+  m_Radius: 0.8390772
 --- !u!114 &361903914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
@@ -582,6 +588,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2566006866873917330, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: m_Color.r
@@ -613,6 +629,11 @@ PrefabInstance:
       propertyPath: RotationCenter
       value: 
       objectReference: {fileID: 361903912}
+    - target: {fileID: 2566006866873917332, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: RadiusAwayFromCenter
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2566006866873917333, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: PlayerNum
@@ -636,7 +657,22 @@ PrefabInstance:
     - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: MaxImpulseForce
-      value: 20
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: PulseColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: MaxScale
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: PulseDuration
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2566006866873917333, guid: 42aa84db704cf2d488a0af3d7a89d5f5, type: 3}
@@ -669,7 +705,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 537891973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -686,7 +722,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 537891973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
@@ -778,9 +814,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -878,6 +915,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -916,12 +954,12 @@ PrefabInstance:
     - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000017484555
+      value: -0.000000104907336
       objectReference: {fileID: 0}
     - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
@@ -968,6 +1006,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.00001
       objectReference: {fileID: 0}
+    - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006866873917331, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2566006866873917330, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: m_Sprite
@@ -999,6 +1047,11 @@ PrefabInstance:
       propertyPath: StartAngleDegrees
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 2566006866873917332, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: RadiusAwayFromCenter
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: ImpulseForce
@@ -1012,7 +1065,22 @@ PrefabInstance:
     - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
       propertyPath: MaxImpulseForce
-      value: 20
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: PulseColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: MaxScale
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2566006865761045520, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
+        type: 3}
+      propertyPath: PulseDuration
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2566006865761045534, guid: 42aa84db704cf2d488a0af3d7a89d5f5,
         type: 3}
@@ -1117,7 +1185,7 @@ PrefabInstance:
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntervalSeconds
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
@@ -1127,17 +1195,17 @@ PrefabInstance:
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[1].time
-      value: 0.28771794
+      value: 0.27521792
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[2].time
-      value: 0.48850766
+      value: 0.4968359
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[2].value
-      value: 2.4246104
+      value: 0.9525993
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
@@ -1152,7 +1220,7 @@ PrefabInstance:
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[1].value
-      value: 3.0655606
+      value: 2.4347055
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
@@ -1182,12 +1250,12 @@ PrefabInstance:
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[3].time
-      value: 0.78796196
+      value: 0.7754619
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[3].value
-      value: 3.4192083
+      value: 2.9197772
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
@@ -1212,12 +1280,12 @@ PrefabInstance:
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[4].time
-      value: 0.8362965
+      value: 0.83629346
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}
       propertyPath: SpawnIntensity.m_Curve.Array.data[4].value
-      value: 5.230992
+      value: 3.4698381
       objectReference: {fileID: 0}
     - target: {fileID: 7218496536048180246, guid: c9a8a5481dc88254881193c7b62e5d5a,
         type: 3}

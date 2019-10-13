@@ -14,6 +14,7 @@ public class MinigameController : UnitySingleton<MinigameController>
     [Header("Gameplay Info")]
     [Range(5.0f, 180.0f)] public float DurationSeconds = 60.0f;
     public bool WinOnTimeEnd;
+    public bool TimerPaused = false;
 
     [Header("Optional")]
     public TextMeshProUGUI TimerText = null;
@@ -25,6 +26,7 @@ public class MinigameController : UnitySingleton<MinigameController>
 
     [HideInInspector] public MinigameGamemodeTypes CurrentGamemode;
     [HideInInspector] public bool MinigameEnded = false;
+
     private float TimeElapsedSeconds = 0;
     private int P1Score = 0;
     private int P2Score = 0;
@@ -157,7 +159,10 @@ public class MinigameController : UnitySingleton<MinigameController>
     {
         if (!MinigameEnded)
         {
-            TimeElapsedSeconds += Time.deltaTime;
+            if (!TimerPaused)
+            {
+                TimeElapsedSeconds += Time.deltaTime;
+            }
 
             // Check whether to finish the minigame due to time running out
             if (TimeElapsedSeconds >= DurationSeconds)

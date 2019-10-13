@@ -47,6 +47,7 @@ public class GameState : UnitySingletonPersistent<GameState>
     public void FinishMinigame(LastMinigameFinish FinishState)
     {
         MinigamesPlayed++;
+        LastMinigameFinishState = FinishState;
         switch(FinishState)
         {
             case LastMinigameFinish.LOST:
