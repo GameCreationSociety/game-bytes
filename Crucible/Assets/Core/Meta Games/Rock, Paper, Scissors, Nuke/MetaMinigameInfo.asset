@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 633438c4744de4d8baaefe83062c94ce, type: 3}
+  m_Name: MetaMinigameInfo
+  m_EditorClassIdentifier: 
+  Name: Rock Paper Scissors Nuke
+  Description: 2 player versus rock paper scissors game
+  Year: 2019
+  Semester: 0
+  Thumbnail: {fileID: 0}
+  CreatorNames: George Whitfield
+  P1_JoystickDescription: change stage selection
+  P1_Button1Description: confirm
+  P1_Button2Description: rock
+  P1_Button3Description: paper
+  P1_Button4Description: scissors
+  P1_Button5Description: nuke
+  P1_Button6Description: anti nuke
+  P2_JoystickDescription: change stage selection
+  P2_Button1Description: confirm
+  P2_Button2Description: rock
+  P2_Button3Description: paper
+  P2_Button4Description: scissors
+  P2_Button5Description: nuke
+  P2_Button6Description: anti nuke
+  GameScene:
+    sceneAsset: {fileID: 102900000, guid: f54537ccc63884c89b2925d06dda2924, type: 3}
+    scenePath: Assets/Core/Meta Games/Rock, Paper, Scissors, Nuke/RockPaperScissorsNuke.unity
+  SupportedGameModes: 1
+  ExcludeFromGameList: 1

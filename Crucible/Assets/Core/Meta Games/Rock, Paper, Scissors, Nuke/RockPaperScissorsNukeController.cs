@@ -29,6 +29,23 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         CHOOSE_STAGE
     };
 
+    [System.Serializable]
+    public struct Controls
+    {
+        public KeyCode P1Confirm;
+        public KeyCode P1Rock;
+        public KeyCode P1Paper;
+        public KeyCode P1Scissors;
+        public KeyCode P1Nuke;
+        public KeyCode P1AntiNuke;
+        public KeyCode P2Confirm;
+        public KeyCode P2Rock;
+        public KeyCode P2Paper;
+        public KeyCode P2Scissors;
+        public KeyCode P2Nuke;
+        public KeyCode P2AntiNuke;
+    };
+
     [Header("Gameplay")]
     [SerializeField] private RPSNGameState state;
     [SerializeField] private float RPSNChoiceWaitTime;
@@ -36,8 +53,11 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     [SerializeField] private float chooseMinigameWaitTime;
 
     [SerializeField] private choice p1Choice;
+    [SerializeField] private bool confirmedP1;
     [SerializeField] private choice p2Choice;
+    [SerializeField] private bool confirmedP2;
 
+    [SerializeField] private Controls controls;
 
     [SerializeField] private int numberOfMinigamesToChooseFrom;
     [SerializeField] private List<MinigameInfo> allPossibleMinigames;
@@ -81,7 +101,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     // returns false otherise
     bool BothPlayersReady()
     {
-        if (p1Choice != choice.NONE && p2Choice != choice.NONE)
+        if (confirmedP1 && confirmedP2)
         {
             return true;
         }
@@ -128,13 +148,14 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     IEnumerator WaitForChoices()
     {
         state = RPSNGameState.CHOOSE_WEAPON;
-        // wait for players to select their choices
+        // wait for players to choose their move
         float choiceCounter = RPSNChoiceWaitTime;
         while (!BothPlayersReady() && choiceCounter > 1)
         {
             choiceCounter -= 0.01f;
             // update the counter
             RPSNcountdownTimer.SetText(Mathf.FloorToInt(choiceCounter).ToString());
+            ChoiceListen();
             yield return new WaitForSeconds(0.01f);
         }
         battleOutcome result = Battle();
@@ -151,6 +172,67 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         // have the player who won the battle select the next stage
         StartCoroutine("ChooseMinigame");
     }
+
+
+    // update variables with player's choice (rock, paper, scissors, nuke, antinuke)
+    void ChoiceListen()
+    {
+        // player one controls
+
+        if (Input.GetKey(controls.P1Confirm))
+        {
+            confirmedP1 = true;
+        }
+        else if (Input.GetKey(controls.P1Rock))
+        {
+            p1Choice = choice.ROCK;
+        }
+        else if (Input.GetKey(controls.P1Paper))
+        {
+            p1Choice = choice.PAPER;
+        }
+        else if (Input.GetKey(controls.P1Scissors)) 
+        {
+            p1Choice = choice.SCISSORS;
+        }
+        else if (Input.GetKey(controls.P1Nuke))
+        {
+            p1Choice = choice.NUKE;
+        }
+        else if (Input.GetKey(controls.P1AntiNuke))
+        {
+            p1Choice = choice.ANTINUKE;
+        }
+
+        //player two controls
+
+        if (Input.GetKey(controls.P2Confirm))
+        {
+            confirmedP2 = true;
+        }
+        else if (Input.GetKey(controls.P2Rock))
+        {
+            p2Choice = choice.ROCK;
+        }
+        else if (Input.GetKey(controls.P2Paper))
+        {
+            p2Choice = choice.PAPER;
+        }
+        else if (Input.GetKey(controls.P2Scissors)) 
+        {
+            p2Choice = choice.SCISSORS;
+        }
+        else if (Input.GetKey(controls.P2Nuke))
+        {
+            p2Choice = choice.NUKE;
+        }
+        else if (Input.GetKey(controls.P2AntiNuke))
+        {
+            p2Choice = choice.ANTINUKE;
+        }
+    }
+
+
 
     // Let the player who won choose the minigame
     IEnumerator ChooseMinigame()
@@ -208,6 +290,23 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
             else
             {
                 return battleOutcome.P1WIN;
+            }
+        }
+
+        // p1 anti nuke
+        if (p1Choice == choice.ANTINUKE)
+        {
+            if (p2Choice == choice.NUKE)
+            {
+                return battleOutcome.P1WIN;
+            }
+            else if (p2Choice == choice.ANTINUKE)
+            {
+                return battleOutcome.TIE;
+            }
+            else
+            {
+                return battleOutcome.P2WIN;
             }
         }
 

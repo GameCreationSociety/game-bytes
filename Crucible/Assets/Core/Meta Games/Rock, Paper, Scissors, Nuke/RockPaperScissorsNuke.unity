@@ -1673,11 +1673,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  RPSNChoiceWaitTime: 5
+  RPSNChoiceWaitTime: 15
   winnerChoiceDisplayTime: 4
   chooseMinigameWaitTime: 10
   p1Choice: 1
+  confirmedP1: 0
   p2Choice: 0
+  confirmedP2: 0
+  controls:
+    P1Confirm: 114
+    P1Rock: 116
+    P1Paper: 121
+    P1Scissors: 102
+    P1Nuke: 103
+    P1AntiNuke: 104
+    P2Confirm: 32
+    P2Rock: 122
+    P2Paper: 120
+    P2Scissors: 99
+    P2Nuke: 118
+    P2AntiNuke: 98
   numberOfMinigamesToChooseFrom: 3
   allPossibleMinigames:
   - {fileID: 11400000, guid: 67d503c469254d34081b979e9d1d4d46, type: 2}
