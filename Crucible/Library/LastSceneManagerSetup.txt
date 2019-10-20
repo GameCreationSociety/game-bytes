@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Core/Meta Games/Rock, Paper, Scissors, Nuke/RockPaperScissorsNuke.unity
+- path: Assets/Core/Meta Games/Select Minigame/SelectMinigame.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
