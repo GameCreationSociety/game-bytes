@@ -40,11 +40,14 @@ public class MinigameLauncherController : UnitySingleton<MinigameLauncherControl
     {
         if (GameState.Instance.IsGameStateValid())
         {
+            Debug.Log(GameState.Instance.SelectedMinigames.Length);
+            Debug.Log(GameState.Instance.MinigamesPlayed);
             GameState.Instance.CurrentMinigame = GameState.Instance.SelectedMinigames[GameState.Instance.MinigamesPlayed];
             PopulateUI(false);
         }
         else if(Application.isEditor && DEBUG_MinigamePreview)
         {
+            Debug.Log(GameState.Instance.SelectedMinigames.Length);
             GameState.Instance.CurrentMinigame = DEBUG_MinigamePreview;
             PopulateUI(true);
         }

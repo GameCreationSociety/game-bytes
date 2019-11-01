@@ -47,6 +47,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     };
 
     [Header("Gameplay")]
+    private GameState gameState;
     [SerializeField] private RPSNGameState state;
     [SerializeField] private float RPSNChoiceWaitTime;
     [SerializeField] private float winnerChoiceDisplayTime;
@@ -60,7 +61,6 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     [SerializeField] private Controls controls;
 
     [SerializeField] private int numberOfMinigamesToChooseFrom;
-    [SerializeField] private List<MinigameInfo> allPossibleMinigames;
 
     [Header("Sounds")]
     [SerializeField] private AudioSource effectsSource;
@@ -92,8 +92,9 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
 
     private void Start()
     {
+        gameState = GameState.Instance;
         InitRockPaperScissorsNuke();
-        StartCoroutine("WaitForChoices");
+        StartCoroutine(WaitForChoices());
 
     }
 
@@ -170,7 +171,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         }
 
         // have the player who won the battle select the next stage
-        StartCoroutine("ChooseMinigame");
+        StartCoroutine(ChooseMinigame());
     }
 
 
@@ -237,23 +238,26 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     // Let the player who won choose the minigame
     IEnumerator ChooseMinigame()
     {
-        state = RPSNGameState.CHOOSE_STAGE;
-        OpenChooseMinigameGraphics();
-        float choiceCounter = chooseMinigameWaitTime;
-        List<MinigameInfo> MinigamesToChooseFrom = RandomMinigamesSubset();
-        MinigameInfo selected = null;
-        while (selected == null && choiceCounter > 1)
-        {
-            choiceCounter -= 0.01f;
-            chooseMinigameTimer.SetText(Mathf.FloorToInt(choiceCounter).ToString());
-            yield return new WaitForSeconds(0.01f);
-        }
-        // if the player has not selected a minigame by the time runs out, select a random minigame
-        if (selected == null)
-        {
-            selected = MinigamesToChooseFrom[Mathf.FloorToInt(Random.Range(0, MinigamesToChooseFrom.Count))];
-        }
-        SceneTransitionController.Instance.TransitionToScene("MinigameLauncher");
+        // state = RPSNGameState.CHOOSE_STAGE;
+        SceneTransitionController.Instance.TransitionToScene("SelectMinigame");
+        yield return null;
+        // OpenChooseMinigameGraphics();
+        // float choiceCounter = chooseMinigameWaitTime;
+        // List<MinigameInfo> MinigamesToChooseFrom = RandomMinigamesSubset();
+        // MinigameInfo selected = null;
+        // while (selected == null && choiceCounter > 1)
+        // {
+        //     choiceCounter -= 0.01f;
+        //     chooseMinigameTimer.SetText(Mathf.FloorToInt(choiceCounter).ToString());
+        //     yield return new WaitForSeconds(0.01f);
+        // }
+        // // if the player has not selected a minigame by the time runs out, select a random minigame
+        // if (selected == null)
+        // {
+        //     selected = MinigamesToChooseFrom[Mathf.FloorToInt(Random.Range(0, MinigamesToChooseFrom.Count))];
+        // }
+        // gameState.CurrentMinigame = selected;
+        // SceneTransitionController.Instance.TransitionToScene("MinigameLauncher");
     }
 
     // randomly chooses rock, paper or scissors
@@ -375,7 +379,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     // generates a random subset of minigames without repeats (if possible)
     List<MinigameInfo> RandomMinigamesSubset()
     {
-        List<MinigameInfo> possibleChoiceCopy = new List<MinigameInfo>(allPossibleMinigames);
+        List<MinigameInfo> possibleChoiceCopy = new List<MinigameInfo>(gameState.SelectedMinigames);
         List<MinigameInfo> result = new List<MinigameInfo>();
         while (result.Count < numberOfMinigamesToChooseFrom)
         {
@@ -391,9 +395,9 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
             {
                 while (result.Count < numberOfMinigamesToChooseFrom)
                 {
-                    int randomInt2 = Mathf.RoundToInt(Random.Range(0, allPossibleMinigames.Count));
+                    int randomInt2 = Mathf.RoundToInt(Random.Range(0, gameState.SelectedMinigames.Length));
                     // add the random minigame to the result list
-                    result.Add(allPossibleMinigames[randomInt2]);
+                    result.Add(gameState.SelectedMinigames[randomInt2]);
                 }
             }
         }
