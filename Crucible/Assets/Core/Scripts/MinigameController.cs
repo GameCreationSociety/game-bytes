@@ -80,7 +80,8 @@ public class MinigameController : UnitySingleton<MinigameController>
     private IEnumerator GoBackToLauncher()
     {
         yield return new WaitForSecondsRealtime(Settings.GameEndGraphicsWait);
-        SceneManager.LoadScene(Settings.MinigameLauncherScene.ScenePath);
+        //SceneManager.LoadScene(Settings.MinigameLauncherScene.ScenePath);
+        SceneManager.LoadScene("RockPaperScissorsNuke");
     }
 
     private IEnumerator GoToEndScreen()

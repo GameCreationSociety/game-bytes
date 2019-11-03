@@ -41,14 +41,18 @@ public class EndScreenController : UnitySingleton<EndScreenController>
         int gamesPlayed = GameState.Instance.MinigamesPlayed;
         int gamesWon = GameState.Instance.MinigamesWon;
 
-        float percentWon = gamesWon / gamesPlayed;
+        float percentWon = 0;
+        if (gamesPlayed != 0)
+        {
+            percentWon = gamesWon / gamesPlayed;
+        }
 
         if (percentWon < 0.5f)
         {
-            return "Better luck next time!";
+            return "You both lose! :(";
         } else if (p1Score == p2Score)
         {
-            return "You both win!";
+            return "You both win! :)";
         } else if (p1Score > p2Score)
         {
             return "Player 1 wins!";

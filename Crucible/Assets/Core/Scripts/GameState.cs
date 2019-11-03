@@ -23,8 +23,11 @@ public class GameState : UnitySingletonPersistent<GameState>
     public int MinigamesPlayed = 0;
     public int MinigamesWonByP1 = 0;
     public int MinigamesWonByP2 = 0;
+    public int ScorePlayer1 = 0;
+    public int ScorePlayer2 = 0;
     public MinigameInfo[] SelectedMinigames;
     public MinigameInfo CurrentMinigame;
+    public int WinningScore = 10;
     public MinigameGamemodeTypes Gamemode;
 
     /** A scene might be launched not from the minigame launcher but directly. In that case, the game state will not be valid.*/

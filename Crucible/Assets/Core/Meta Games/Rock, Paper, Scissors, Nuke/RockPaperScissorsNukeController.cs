@@ -60,6 +60,12 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
 
     [SerializeField] private Controls controls;
 
+    [SerializeField] int rockPrice;
+    [SerializeField] int paperPrice;
+    [SerializeField] int scissorsPrice;
+    [SerializeField] int nukePrice;
+    [SerializeField] int antiNukePrice;
+
     [SerializeField] private int numberOfMinigamesToChooseFrom;
 
     [Header("Sounds")]
@@ -67,13 +73,13 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     [SerializeField] private AudioClip choiceSelected;
 
     [Header("Graphics")]
-    [SerializeField] GameObject battleGraphics;
     [SerializeField] GameObject chooseMinigameGraphics;
     [SerializeField] TextMeshProUGUI p1ChoiceGUI;
     [SerializeField] TextMeshProUGUI p2ChoiceGUI;
+    [SerializeField] TextMeshProUGUI p1Score;
+    [SerializeField] TextMeshProUGUI p2Score;
     [SerializeField] TextMeshProUGUI winText;
     [SerializeField] TextMeshProUGUI RPSNcountdownTimer;
-    [SerializeField] TextMeshProUGUI chooseMinigameTimer;
 
     
     void InitRockPaperScissorsNuke()
@@ -85,6 +91,8 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         winText.enabled = false;
         p1ChoiceGUI.enabled = false;
         p2ChoiceGUI.enabled = false;
+        p1Score.SetText(GameState.Instance.ScorePlayer1.ToString() + " POINTS");
+        p2Score.SetText(GameState.Instance.ScorePlayer2.ToString() + " POINTS");
 
         state = RPSNGameState.ANIMATIONS_WAIT; 
     }
@@ -114,6 +122,8 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         Debug.Log("Displaying the battle outcome");
         p1ChoiceGUI.SetText(p1Choice.ToString());
         p2ChoiceGUI.SetText(p2Choice.ToString());
+        p1Score.SetText(GameState.Instance.ScorePlayer1.ToString() + " POINTS");
+        p2Score.SetText(GameState.Instance.ScorePlayer2.ToString() + " POINTS");
         p1ChoiceGUI.enabled = true;
         p2ChoiceGUI.enabled = true;
         winText.enabled = true;
@@ -139,12 +149,6 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         
     }
 
-    // close the battle graphics and open the "choose minigame" graphics
-    void OpenChooseMinigameGraphics()
-    {
-        battleGraphics.SetActive(false);
-        chooseMinigameGraphics.SetActive(true);
-    }
     // wait for the players to choose their move, display results from battle
     IEnumerator WaitForChoices()
     {
@@ -159,6 +163,9 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
             ChoiceListen();
             yield return new WaitForSeconds(0.01f);
         }
+        // purchase the choices
+        PurchaseChoice(1);
+        PurchaseChoice(2);
         battleOutcome result = Battle();
 
         // display the results of their choices
@@ -171,7 +178,159 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         }
 
         // have the player who won the battle select the next stage
-        StartCoroutine(ChooseMinigame());
+        // StartCoroutine(ChooseMinigame());
+
+        // SIMILUATE PLAYING A GAME
+
+        
+        if (result == battleOutcome.P1WIN)
+        {
+            SimulatePlayerWinningMinigame(1);
+        }
+        else if (result == battleOutcome.P2WIN)
+        {
+            SimulatePlayerWinningMinigame(2);
+        }
+        else
+        {
+            SimulatePlayerWinningMinigame(Random.Range(1, 2));
+        }
+    }
+
+    void PurchaseChoice(int player)
+    {
+        if (player == 1) // player 1
+        {
+            switch (p1Choice)
+            {
+                case choice.ROCK:
+                    if (GameState.Instance.ScorePlayer1 >= rockPrice)
+                    {
+                        GameState.Instance.ScorePlayer1 -= rockPrice;
+                    } else
+                    {
+                        p1Choice = RandomChoice();
+                    }
+                    break;
+                case choice.PAPER:
+                    if (GameState.Instance.ScorePlayer1 >= paperPrice)
+                    {
+                        GameState.Instance.ScorePlayer1 -= paperPrice;
+                    } else
+                    {
+                        p1Choice = RandomChoice();
+                    }
+                    break;
+                case choice.SCISSORS:
+                    if (GameState.Instance.ScorePlayer1 >= scissorsPrice)
+                    {
+                        GameState.Instance.ScorePlayer1 -= scissorsPrice;
+                    }  else
+                    {
+                        p1Choice = RandomChoice();
+                    }
+                    break;
+                case choice.NUKE:
+                    if (GameState.Instance.ScorePlayer1 >= nukePrice)
+                    {
+                        GameState.Instance.ScorePlayer1 -= nukePrice;
+                    }   else
+                    {
+                        p1Choice = RandomChoice();
+                    }
+                    break;
+                case choice.ANTINUKE:
+                    if (GameState.Instance.ScorePlayer1 >= antiNukePrice)
+                    {
+                        GameState.Instance.ScorePlayer1 -= antiNukePrice;
+                    } else
+                    {
+                        p1Choice = RandomChoice();
+                    }
+                    break;
+            }
+        } else // player 2
+        {
+            switch (p2Choice)
+            {
+                case choice.ROCK:
+                    if (GameState.Instance.ScorePlayer2 >= rockPrice)
+                    {
+                        GameState.Instance.ScorePlayer2 -= rockPrice;
+                    }
+                    else
+                    {
+                        p2Choice = RandomChoice();
+                    }
+                    break;
+                case choice.PAPER:
+                    if (GameState.Instance.ScorePlayer2 >= paperPrice)
+                    {
+                        GameState.Instance.ScorePlayer2 -= paperPrice;
+                    }
+                    else
+                    {
+                        p2Choice = RandomChoice();
+                    }
+                    break;
+                case choice.SCISSORS:
+                    if (GameState.Instance.ScorePlayer2 >= scissorsPrice)
+                    {
+                        GameState.Instance.ScorePlayer2 -= scissorsPrice;
+                    }
+                    else
+                    {
+                        p2Choice = RandomChoice();
+                    }
+                    break;
+                case choice.NUKE:
+                    if (GameState.Instance.ScorePlayer2 >= nukePrice)
+                    {
+                        GameState.Instance.ScorePlayer2 -= nukePrice;
+                    }
+                    else
+                    {
+                        p2Choice = RandomChoice();
+                    }
+                    break;
+                case choice.ANTINUKE:
+                    if (GameState.Instance.ScorePlayer2 >= antiNukePrice)
+                    {
+                        GameState.Instance.ScorePlayer2 -= antiNukePrice;
+                    }
+                    else
+                    {
+                        p2Choice = RandomChoice();
+                    }
+                    break;
+            }
+        }
+    }
+
+
+    void SimulatePlayerWinningMinigame(int playerWon)
+    {
+        // give the playe the points
+        GameState.Instance.MinigamesPlayed++;
+        GameState.Instance.MinigamesWon++;
+        if (playerWon == 1) // player 1
+        {
+            GameState.Instance.ScorePlayer1 += Random.Range(1, 5);
+            GameState.Instance.MinigamesWonByP1++;
+        } else // player 2
+        {
+            GameState.Instance.ScorePlayer2 += Random.Range(1, 5);
+            GameState.Instance.MinigamesWonByP2++;
+        }
+        // reload the rock paper scissors nuke scene if nobody won yet
+        if (GameState.Instance.ScorePlayer1 >= GameState.Instance.WinningScore ||
+            GameState.Instance.ScorePlayer2 >= GameState.Instance.WinningScore)
+        {
+            SceneTransitionController.Instance.TransitionToScene("EndScreen");
+        } else
+        {
+        SceneTransitionController.Instance.TransitionToScene("RockPaperScissorsNuke");
+        }
     }
 
 
@@ -265,6 +424,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     {
         return (choice)Random.Range(0, 3); 
     }
+
 
 
     // returns the result rock paper scissors nuke battle
