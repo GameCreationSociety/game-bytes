@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsNukeController>
 {
@@ -76,19 +77,28 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     [SerializeField] GameObject chooseMinigameGraphics;
     [SerializeField] TextMeshProUGUI p1ChoiceGUI;
     [SerializeField] TextMeshProUGUI p2ChoiceGUI;
+    [SerializeField] TextMeshProUGUI p1ConfirmedGUI;
+    [SerializeField] TextMeshProUGUI p2ConfirmedGUI;
     [SerializeField] TextMeshProUGUI p1Score;
     [SerializeField] TextMeshProUGUI p2Score;
     [SerializeField] TextMeshProUGUI winText;
     [SerializeField] TextMeshProUGUI RPSNcountdownTimer;
+    [SerializeField] Sprite rock;
+    [SerializeField] Sprite paper;
+    [SerializeField] Sprite scissors;
+    [SerializeField] Sprite nuke;
+    [SerializeField] Sprite antinuke;
+    [SerializeField] Image p1ChoiceImage;
+    [SerializeField] Image p2ChoiceImage;
+    [SerializeField] GameObject battleResultUI;
+    [SerializeField] GameObject playBattleUI;
 
-    
     void InitRockPaperScissorsNuke()
     {
         p1Choice = choice.NONE;
         p2Choice = choice.NONE;
 
         // init the graphics
-        winText.enabled = false;
         p1ChoiceGUI.enabled = false;
         p2ChoiceGUI.enabled = false;
         p1Score.SetText(GameState.Instance.ScorePlayer1.ToString() + " POINTS");
@@ -122,11 +132,58 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         Debug.Log("Displaying the battle outcome");
         p1ChoiceGUI.SetText(p1Choice.ToString());
         p2ChoiceGUI.SetText(p2Choice.ToString());
+
+        // update the score
         p1Score.SetText(GameState.Instance.ScorePlayer1.ToString() + " POINTS");
         p2Score.SetText(GameState.Instance.ScorePlayer2.ToString() + " POINTS");
-        p1ChoiceGUI.enabled = true;
-        p2ChoiceGUI.enabled = true;
-        winText.enabled = true;
+
+        battleResultUI.SetActive(true);
+        playBattleUI.SetActive(false);
+
+        // display art assets corresponding to each player's choice
+        Sprite p1Sprite = rock; // default image is rock
+        Sprite p2Sprite = rock;
+
+        switch (p1Choice)
+        {
+            case choice.ROCK:
+                p1Sprite = rock;
+                break;
+            case choice.PAPER:
+                p1Sprite = paper;
+                break;
+            case choice.SCISSORS:
+                p1Sprite = scissors;
+                break;
+            case choice.NUKE:
+                p1Sprite = nuke;
+                break;
+            case choice.ANTINUKE:
+                p1Sprite = antinuke;
+                break;
+        }
+        switch (p2Choice)
+        {
+            case choice.ROCK:
+                p2Sprite = rock;
+                break;
+            case choice.PAPER:
+                p2Sprite = paper;
+                break;
+            case choice.SCISSORS:
+                p2Sprite = scissors;
+                break;
+            case choice.NUKE:
+                p2Sprite = nuke;
+                break;
+            case choice.ANTINUKE:
+                p2Sprite = antinuke;
+                break;
+        }
+
+        p1ChoiceImage.sprite = p1Sprite;
+        p2ChoiceImage.sprite = p2Sprite;
+
         switch (outcome)
         {
             case battleOutcome.INVALID:
@@ -342,6 +399,8 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         if (Input.GetKey(controls.P1Confirm))
         {
             confirmedP1 = true;
+            // display on UI that p1 confimred
+            p1ConfirmedGUI.SetText("Ready");
         }
         else if (Input.GetKey(controls.P1Rock))
         {
@@ -369,6 +428,8 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         if (Input.GetKey(controls.P2Confirm))
         {
             confirmedP2 = true;
+            p2ConfirmedGUI.SetText("Ready");
+            // display on UI that p2 is confirmed
         }
         else if (Input.GetKey(controls.P2Rock))
         {
