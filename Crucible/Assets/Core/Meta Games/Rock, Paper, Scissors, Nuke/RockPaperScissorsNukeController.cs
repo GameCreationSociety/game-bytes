@@ -47,6 +47,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         public KeyCode P2AntiNuke;
     };
 
+
     [Header("Gameplay")]
     private GameState gameState;
     [SerializeField] private RPSNGameState state;
@@ -68,7 +69,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
     [SerializeField] int antiNukePrice;
 
     [SerializeField] private int numberOfMinigamesToChooseFrom;
-
+    
     [Header("Sounds")]
     [SerializeField] private AudioSource effectsSource;
     [SerializeField] private AudioClip choiceSelected;
@@ -252,6 +253,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         {
             SimulatePlayerWinningMinigame(Random.Range(1, 2));
         }
+        
     }
 
     void PurchaseChoice(int player)
