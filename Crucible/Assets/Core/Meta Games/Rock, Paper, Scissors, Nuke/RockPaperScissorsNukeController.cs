@@ -236,23 +236,23 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         }
 
         // have the player who won the battle select the next stage
-        // StartCoroutine(ChooseMinigame());
+        StartCoroutine(ChooseMinigame());
 
-        // SIMILUATE PLAYING A GAME
+        // SIMULATE PLAYING A GAME
 
         
-        if (result == battleOutcome.P1WIN)
-        {
-            SimulatePlayerWinningMinigame(1);
-        }
-        else if (result == battleOutcome.P2WIN)
-        {
-            SimulatePlayerWinningMinigame(2);
-        }
-        else
-        {
-            SimulatePlayerWinningMinigame(Random.Range(1, 2));
-        }
+        // if (result == battleOutcome.P1WIN)
+        // {
+        //     SimulatePlayerWinningMinigame(1);
+        // }
+        // else if (result == battleOutcome.P2WIN)
+        // {
+        //     SimulatePlayerWinningMinigame(2);
+        // }
+        // else
+        // {
+        //     SimulatePlayerWinningMinigame(Random.Range(1, 2));
+        // }
         
     }
 
@@ -463,23 +463,6 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         // state = RPSNGameState.CHOOSE_STAGE;
         SceneTransitionController.Instance.TransitionToScene("SelectMinigame");
         yield return null;
-        // OpenChooseMinigameGraphics();
-        // float choiceCounter = chooseMinigameWaitTime;
-        // List<MinigameInfo> MinigamesToChooseFrom = RandomMinigamesSubset();
-        // MinigameInfo selected = null;
-        // while (selected == null && choiceCounter > 1)
-        // {
-        //     choiceCounter -= 0.01f;
-        //     chooseMinigameTimer.SetText(Mathf.FloorToInt(choiceCounter).ToString());
-        //     yield return new WaitForSeconds(0.01f);
-        // }
-        // // if the player has not selected a minigame by the time runs out, select a random minigame
-        // if (selected == null)
-        // {
-        //     selected = MinigamesToChooseFrom[Mathf.FloorToInt(Random.Range(0, MinigamesToChooseFrom.Count))];
-        // }
-        // gameState.CurrentMinigame = selected;
-        // SceneTransitionController.Instance.TransitionToScene("MinigameLauncher");
     }
 
     // randomly chooses rock, paper or scissors

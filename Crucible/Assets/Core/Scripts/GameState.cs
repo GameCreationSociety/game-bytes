@@ -20,6 +20,15 @@ public struct GameWinValues
     public int shotPot;
 }
 
+[System.Serializable]
+public enum LastMetagameFinish
+{
+    P1WIN,
+    P2WIN,
+    TIE,
+    NONE
+}
+
 
 /** Persistent singleton (never deleted after creation) used to keep track the current state of the game. 
  *  If you are not the lead for the minigame project please DO NOT MODIFY this file. 
@@ -27,6 +36,7 @@ public struct GameWinValues
 public class GameState : UnitySingletonPersistent<GameState>
 {
     public LastMinigameFinish LastMinigameFinishState;
+    public LastMetagameFinish LastMetagameFinishState;
     public int MinigamesWon = 0;
     public int MinigamesPlayed = 0;
     public int MinigamesWonByP1 = 0;
@@ -56,6 +66,7 @@ public class GameState : UnitySingletonPersistent<GameState>
         MinigamesWonByP1 = 0;
         MinigamesWonByP2 = 0;
         LastMinigameFinishState = LastMinigameFinish.NONE;
+        LastMetagameFinishState = LastMetagameFinish.NONE;
         SelectedMinigames = NewSelectedMinigames;
         Gamemode = NewGamemode;
     }
