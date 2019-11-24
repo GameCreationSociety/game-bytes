@@ -69,7 +69,7 @@ public class GameState : UnitySingletonPersistent<GameState>
         MinigamesWonByP2 = 0;
         LastMinigameFinishState = LastMinigameFinish.NONE;
         LastMetagameFinishState = LastMetagameFinish.NONE;
-        SelectedMinigames = new List<MinigameInfo>(NewSelectedMinigames);
+        SelectedMinigames = new List<MinigameInfo>();
         Gamemode = NewGamemode;
     }
 
