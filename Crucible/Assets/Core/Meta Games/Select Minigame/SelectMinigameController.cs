@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class SelectMinigameController : UnitySingleton<SelectMinigameController>
 {
@@ -33,13 +34,19 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
 
     void Start()
     {
+        gamesToChooseFrom = settings.GetShuffledMinigames().ToList();
         // If we overestimated the number of games to choose from
-        if (numberOfMinigamesToChooseFrom > GameState.Instance.SelectedMinigames.Count) {
-            numberOfMinigamesToChooseFrom = GameState.Instance.SelectedMinigames.Count;
+        if (numberOfMinigamesToChooseFrom > gamesToChooseFrom.Count) {
+            numberOfMinigamesToChooseFrom = gamesToChooseFrom.Count;
 
             //TODO: won't need this if dynamic thumbnail display, get all minigame options, spawn thumbnail screens based on how many choices we can select
             // Reset minigame thumbnail array
-            populatableObjects.RemoveRange(numberOfMinigamesToChooseFrom - 1, populatableObjects.Count - numberOfMinigamesToChooseFrom + 1);
+            if (populatableObjects.Count > numberOfMinigamesToChooseFrom) {
+                for (int i = numberOfMinigamesToChooseFrom; i < populatableObjects.Count; i++) {
+                    populatableObjects[i].SetActive(false);
+                }
+                populatableObjects.RemoveRange(numberOfMinigamesToChooseFrom, populatableObjects.Count - numberOfMinigamesToChooseFrom);
+            }
             // minigameSelectionLocation.transform.localPosition = new Vector3(0, minigameSelectionLocation.transform.localPosition.y, minigameSelectionLocation.transform.localPosition.z);
         }
 
@@ -78,8 +85,8 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
         // also populate thumbnail and text based on gamestate minigameinfo
         for(int index = 0; index < populatableObjects.Count; index++) {
             var thumbnail = populatableObjects[index];
-            thumbnail.GetComponentsInChildren<TextMeshProUGUI>()[0].text = GameState.Instance.SelectedMinigames[index].Name;
-            populatableThumbnails[index].GetComponent<Image>().sprite = GameState.Instance.SelectedMinigames[index].Thumbnail;
+            thumbnail.GetComponentsInChildren<TextMeshProUGUI>()[0].text = gamesToChooseFrom[index].Name;
+            populatableThumbnails[index].GetComponent<Image>().sprite = gamesToChooseFrom[index].Thumbnail;
         }
     }
 
@@ -129,7 +136,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
 
     void LoadSelected() {
         //TODO: select minigamesplayed at index of selectedMinigames
-        GameState.Instance.MinigamesPlayed = selected;
+        GameState.Instance.SelectedMinigames.Add(gamesToChooseFrom[selected]);
         SceneTransitionController.Instance.TransitionToScene("MinigameLauncher");
     }
 
@@ -144,33 +151,5 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
         selectionBox.SetActive(false);
         // load selected
         LoadSelected();
-    }
-
-        // generates a random subset of minigames without repeats (if possible)
-    List<MinigameInfo> RandomMinigamesSubset()
-    {
-        List<MinigameInfo> possibleChoiceCopy = GameState.Instance.SelectedMinigames;
-        List<MinigameInfo> result = new List<MinigameInfo>();
-        while (result.Count < numberOfMinigamesToChooseFrom)
-        {
-            // generate a new random index
-            int randomInt1 = Mathf.RoundToInt(Random.Range(0, possibleChoiceCopy.Count));
-            // add the random minigame to the result list
-            result.Add(possibleChoiceCopy[randomInt1]);
-            // remove the minigame that we added to result from possibleChoiceCopy (this ensures we dont have repeats)
-            possibleChoiceCopy.RemoveAt(randomInt1);
-            
-            // if we run out of possible minigames to add, then allow repeats
-            if (possibleChoiceCopy.Count == 0)
-            {
-                while (result.Count < numberOfMinigamesToChooseFrom)
-                {
-                    int randomInt2 = Mathf.RoundToInt(Random.Range(0, GameState.Instance.SelectedMinigames.Count));
-                    // add the random minigame to the result list
-                    result.Add(GameState.Instance.SelectedMinigames[randomInt2]);
-                }
-            }
-        }
-        return result;
     }
 }
