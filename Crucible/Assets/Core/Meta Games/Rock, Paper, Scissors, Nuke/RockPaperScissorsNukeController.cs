@@ -238,7 +238,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         // have the player who won the battle select the next stage
         StartCoroutine(ChooseMinigame());
 
-        // SIMILUATE PLAYING A GAME
+        // SIMULATE PLAYING A GAME
 
         /*
         if (result == battleOutcome.P1WIN)
