@@ -18,6 +18,7 @@ public struct GameWinValues
 {
     public int meteorMasher;
     public int shotPot;
+    public int _default;
 }
 
 [System.Serializable]
@@ -50,7 +51,8 @@ public class GameState : UnitySingletonPersistent<GameState>
     public GameWinValues winVals = new GameWinValues
     {
         meteorMasher = 3,
-        shotPot = 2
+        shotPot = 2,
+        _default = 1
     };
 
     /** A scene might be launched not from the minigame launcher but directly. In that case, the game state will not be valid.*/
@@ -79,9 +81,13 @@ public class GameState : UnitySingletonPersistent<GameState>
             case LastMinigameFinish.LOST:
                 break;
             case LastMinigameFinish.WON:
+                UpdateMetaScore(1);
+                UpdateMetaScore(0);
                 MinigamesWon++;
                 break;
             case LastMinigameFinish.TIE:
+                UpdateMetaScore(1);
+                UpdateMetaScore(0);
                 break;
             case LastMinigameFinish.P1WIN:
                 UpdateMetaScore(0);
@@ -108,6 +114,9 @@ public class GameState : UnitySingletonPersistent<GameState>
                 break;
             case "shotpot":
                 AddMetaScore(winningPlayer, winVals.shotPot);
+                break;
+            default:
+                AddMetaScore(winningPlayer, winVals._default);
                 break;
         }
     }

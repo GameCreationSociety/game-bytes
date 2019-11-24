@@ -491,15 +491,17 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         {
             if (p2Choice == choice.ANTINUKE)
             {
-                
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P2WIN;
                 return battleOutcome.P2WIN;
             }
             else if (p2Choice == choice.NUKE)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.TIE;
                 return battleOutcome.TIE;
             }
             else
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P1WIN;
                 return battleOutcome.P1WIN;
             }
         }
@@ -509,14 +511,17 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
         {
             if (p2Choice == choice.NUKE)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P1WIN;
                 return battleOutcome.P1WIN;
             }
             else if (p2Choice == choice.ANTINUKE)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.TIE;
                 return battleOutcome.TIE;
             }
             else
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P2WIN;
                 return battleOutcome.P2WIN;
             }
         }
@@ -527,15 +532,18 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
             // rock beats scissors and antinuke
             if (p2Choice == choice.SCISSORS || p2Choice == choice.ANTINUKE)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P1WIN;
                 return battleOutcome.P1WIN;
             // rock ties rock
             } else if (p2Choice == choice.ROCK)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.TIE;
                 return battleOutcome.TIE;
             }
             // rock loses to everything else
             else
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P2WIN;
                 return battleOutcome.P2WIN;
             }
         }
@@ -546,16 +554,19 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
             // scissors beats paper and antinuke
             if (p2Choice == choice.PAPER || p2Choice == choice.ANTINUKE)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P1WIN;
                 return battleOutcome.P1WIN;
             }
             // scissors ties scissors
             else if (p2Choice == choice.SCISSORS)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.TIE;
                 return battleOutcome.TIE;
             }
             // scissors loses to everything else
             else
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P2WIN;
                 return battleOutcome.P2WIN;
             }
         }
@@ -566,16 +577,19 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
             // paper beats rock and antinuke
             if (p2Choice == choice.ROCK || p2Choice == choice.ANTINUKE)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P1WIN;
                 return battleOutcome.P1WIN;
             }
             // paper ties paper
             else if (p2Choice == choice.PAPER)
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.TIE;
                 return battleOutcome.TIE;
             }
             // paper loses to everything else
             else
             {
+                GameState.Instance.LastMetagameFinishState = LastMetagameFinish.P2WIN;
                 return battleOutcome.P2WIN;
             }
         }

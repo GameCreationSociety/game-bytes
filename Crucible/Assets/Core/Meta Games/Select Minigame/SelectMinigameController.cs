@@ -86,7 +86,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
     void CheckKeystroke() {
         switch (currentWinner) {
             case PlayerWon.P1:
-                if (Input.GetAxis("P1_Horizontal") == 0 && isPressed) isPressed = false;
+                if (Mathf.Approximately(Input.GetAxis("P1_Horizontal"), 0) && isPressed) isPressed = false;
                 else if (isPressed) return;
                 if (Input.GetAxis("P1_Horizontal") > 0) { // Going right
                     if (selected < numberOfMinigamesToChooseFrom - 1) {
@@ -105,7 +105,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
                 }
                 break;
             case PlayerWon.P2:
-                if (Input.GetAxis("P2_Horizontal") == 0 && isPressed) isPressed = false;
+                if (Mathf.Approximately(Input.GetAxis("P2_Horizontal"), 0) && isPressed) isPressed = false;
                 else if (isPressed) return;
                 if (Input.GetAxis("P2_Horizontal") > 0) { // Going right
                     if (selected < numberOfMinigamesToChooseFrom - 1) {
