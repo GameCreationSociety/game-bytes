@@ -34,8 +34,8 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
     void Start()
     {
         // If we overestimated the number of games to choose from
-        if (numberOfMinigamesToChooseFrom > GameState.Instance.SelectedMinigames.Length) {
-            numberOfMinigamesToChooseFrom = GameState.Instance.SelectedMinigames.Length;
+        if (numberOfMinigamesToChooseFrom > GameState.Instance.SelectedMinigames.Count) {
+            numberOfMinigamesToChooseFrom = GameState.Instance.SelectedMinigames.Count;
 
             //TODO: won't need this if dynamic thumbnail display, get all minigame options, spawn thumbnail screens based on how many choices we can select
             // Reset minigame thumbnail array
@@ -149,7 +149,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
         // generates a random subset of minigames without repeats (if possible)
     List<MinigameInfo> RandomMinigamesSubset()
     {
-        List<MinigameInfo> possibleChoiceCopy = new List<MinigameInfo>(GameState.Instance.SelectedMinigames);
+        List<MinigameInfo> possibleChoiceCopy = GameState.Instance.SelectedMinigames;
         List<MinigameInfo> result = new List<MinigameInfo>();
         while (result.Count < numberOfMinigamesToChooseFrom)
         {
@@ -165,7 +165,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
             {
                 while (result.Count < numberOfMinigamesToChooseFrom)
                 {
-                    int randomInt2 = Mathf.RoundToInt(Random.Range(0, GameState.Instance.SelectedMinigames.Length));
+                    int randomInt2 = Mathf.RoundToInt(Random.Range(0, GameState.Instance.SelectedMinigames.Count));
                     // add the random minigame to the result list
                     result.Add(GameState.Instance.SelectedMinigames[randomInt2]);
                 }

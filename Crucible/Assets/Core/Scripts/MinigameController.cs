@@ -127,7 +127,7 @@ public class MinigameController : UnitySingleton<MinigameController>
                 // to the minigame launcher
                 GameState.Instance.FinishMinigame(FinishState);
 
-                if (GameState.Instance.MinigamesPlayed >= GameState.Instance.SelectedMinigames.Length)
+                if (GameState.Instance.MinigamesPlayed >= GameState.Instance.SelectedMinigames.Count)
                 {
                     Debug.Log("Going back to the end screen");
                     StartCoroutine(GoToEndScreen());

@@ -43,7 +43,7 @@ public class GameState : UnitySingletonPersistent<GameState>
     public int MinigamesWonByP2 = 0;
     public int ScorePlayer1 = 0;
     public int ScorePlayer2 = 0;
-    public MinigameInfo[] SelectedMinigames;
+    public List<MinigameInfo> SelectedMinigames;
     public MinigameInfo CurrentMinigame;
     public int WinningScore = 10;
     public MinigameGamemodeTypes Gamemode;
@@ -56,7 +56,7 @@ public class GameState : UnitySingletonPersistent<GameState>
     /** A scene might be launched not from the minigame launcher but directly. In that case, the game state will not be valid.*/
     public bool IsGameStateValid()
     {
-        return SelectedMinigames != null && SelectedMinigames.Length > 0 && MinigamesPlayed < SelectedMinigames.Length;
+        return SelectedMinigames != null && SelectedMinigames.Count > 0 && MinigamesPlayed < SelectedMinigames.Count;
     }
 
     public void SetupNewMinigames(MinigameInfo[] NewSelectedMinigames, MinigameGamemodeTypes NewGamemode)
@@ -67,7 +67,7 @@ public class GameState : UnitySingletonPersistent<GameState>
         MinigamesWonByP2 = 0;
         LastMinigameFinishState = LastMinigameFinish.NONE;
         LastMetagameFinishState = LastMetagameFinish.NONE;
-        SelectedMinigames = NewSelectedMinigames;
+        SelectedMinigames = new List<MinigameInfo>(NewSelectedMinigames);
         Gamemode = NewGamemode;
     }
 
