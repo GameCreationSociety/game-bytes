@@ -43,7 +43,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
             // minigameSelectionLocation.transform.localPosition = new Vector3(0, minigameSelectionLocation.transform.localPosition.y, minigameSelectionLocation.transform.localPosition.z);
         }
 
-        // gamesToChooseFrom = GameState.Instance.SelectedMinigames;
+        gamesToChooseFrom = GameState.Instance.SelectedMinigames;
 
         //TODO: change UI anchors on screen
         switch (GameState.Instance.LastMetagameFinishState) {

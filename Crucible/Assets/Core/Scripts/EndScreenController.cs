@@ -22,13 +22,15 @@ public class EndScreenController : UnitySingleton<EndScreenController>
     [SerializeField] private TextMeshProUGUI P2Score = null;
     [SerializeField] private TextMeshProUGUI GamesPlayedText = null;
     [SerializeField] private TextMeshProUGUI GamesWonText = null;
-
-
+    [SerializeField] private float waitTimeUntilLoadMainMenu = 30f;
+    [SerializeField] private GameObject confetti;
+            
 
     // Start is called before the first frame update
     void Start()
     {
         PopulateUI(true); // populate in debug mode
+        StartCoroutine("RunEndScreen");
     }
 
     // If one player won, return player name
@@ -63,6 +65,28 @@ public class EndScreenController : UnitySingleton<EndScreenController>
         // for debugging 
         {
             return "_INVALID_WIN_STATE_";
+        }
+    }
+
+    IEnumerator RunEndScreen()
+    {
+        while (waitTimeUntilLoadMainMenu > 0)
+        {
+            // transition to the main menu if the keys R or SPACE are pressed
+            waitTimeUntilLoadMainMenu -= Time.deltaTime;
+            InputListener();
+            yield return null;
+        }
+        // transition to the main meny if we wait more the waitTimeUntilLoadMainMenu
+        SceneTransitionController.Instance.TransitionToScene("MainMenu");
+    }
+    void InputListener()
+    {
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKey(KeyCode.Space))
+        {
+            //disable the confetti
+            confetti.SetActive(false);
+            SceneTransitionController.Instance.TransitionToScene("MainMenu");
         }
     }
 
