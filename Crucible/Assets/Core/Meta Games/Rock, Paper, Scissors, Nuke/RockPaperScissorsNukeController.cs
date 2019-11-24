@@ -616,7 +616,7 @@ public class RockPaperScissorsNukeController : UnitySingleton<RockPaperScissorsN
             {
                 while (result.Count < numberOfMinigamesToChooseFrom)
                 {
-                    int randomInt2 = Mathf.RoundToInt(Random.Range(0, gameState.SelectedMinigames.Length));
+                    int randomInt2 = Mathf.RoundToInt(Random.Range(0, gameState.SelectedMinigames.Count));
                     // add the random minigame to the result list
                     result.Add(gameState.SelectedMinigames[randomInt2]);
                 }
