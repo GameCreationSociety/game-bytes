@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Tetris_2p/Tetris Scene.unity
     guid: d92ce7b0c8f6f43249f3490cc28cfea5
+  - enabled: 1
+    path: Assets/Core/Scenes/Credits.unity
+    guid: ea400e475245545768f23841ce73f270
+  - enabled: 1
+    path: Assets/Core/Meta Games/Rock, Paper, Scissors, Nuke/RockPaperScissorsNuke.unity
+    guid: f54537ccc63884c89b2925d06dda2924
+  - enabled: 1
+    path: Assets/Core/Meta Games/Select Minigame/SelectMinigame.unity
+    guid: 9c6865ee69bc544ae83ac34d51fbb1d7
   m_configObjects: {}

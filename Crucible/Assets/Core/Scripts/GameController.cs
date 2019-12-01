@@ -21,7 +21,9 @@ public class GameController : UnitySingleton<GameController>
         if (Application.isEditor && DEBUG_MinigamesToLaunch.Length > 0)
         {
             GameState.Instance.SetupNewMinigames(DEBUG_MinigamesToLaunch, GameModeSelected);
-            SceneTransitionController.Instance.TransitionToScene(Settings.MinigameLauncherScene.ScenePath);
+             //SceneTransitionController.Instance.TransitionToScene(Settings.MinigameLauncherScene.ScenePath);
+            SceneTransitionController.Instance.TransitionToScene
+            ("RockPaperScissorsNuke");
         }
         else
         {
@@ -39,7 +41,9 @@ public class GameController : UnitySingleton<GameController>
             }
 
             GameState.Instance.SetupNewMinigames(MinigamesToPlay, GameModeSelected);
-            SceneTransitionController.Instance.TransitionToScene(Settings.MinigameLauncherScene.ScenePath);
+           // SceneTransitionController.Instance.TransitionToScene(Settings.MinigameLauncherScene.ScenePath);
+            SceneTransitionController.Instance.TransitionToScene
+            ("RockPaperScissorsNuke");
         }
     }
 
@@ -56,5 +60,5 @@ public class GameController : UnitySingleton<GameController>
     public void Start2PlayerVsGame()
     {
         StartGame(MinigameGamemodeTypes.TWOPLAYERVS);
-    } 
+    }
 }

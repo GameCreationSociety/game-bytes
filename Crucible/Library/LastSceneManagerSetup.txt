@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Minigames/MeteorMasher/Scene_MeteorMasher.unity
+- path: Assets/Core/Scenes/EndScreen.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

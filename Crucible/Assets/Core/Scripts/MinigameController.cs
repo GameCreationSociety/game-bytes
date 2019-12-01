@@ -88,7 +88,14 @@ public class MinigameController : UnitySingleton<MinigameController>
     private IEnumerator GoBackToLauncher()
     {
         yield return new WaitForSecondsRealtime(Settings.GameEndGraphicsWait);
-        SceneManager.LoadScene(Settings.MinigameLauncherScene.ScenePath);
+        //SceneManager.LoadScene(Settings.MinigameLauncherScene.ScenePath);
+        SceneManager.LoadScene("RockPaperScissorsNuke");
+    }
+
+    private IEnumerator GoToEndScreen()
+    {
+        yield return new WaitForSecondsRealtime(Settings.GameEndGraphicsWait);
+        SceneManager.LoadScene(Settings.MinigameEndScene.ScenePath);
     }
 
     public void FinishGame(LastMinigameFinish FinishState)
@@ -124,8 +131,19 @@ public class MinigameController : UnitySingleton<MinigameController>
             // the game state WILL NOT be valid
             if (GameState.Instance.IsGameStateValid())
             {
+                // if we have played numGamesToPlay number of games, then go to the EndScreen scene. Otherwise, go back
+                // to the minigame launcher
                 GameState.Instance.FinishMinigame(FinishState);
-                StartCoroutine(GoBackToLauncher());
+
+                if (GameState.Instance.MinigamesPlayed >= GameState.Instance.SelectedMinigames.Count)
+                {
+                    Debug.Log("Going back to the end screen");
+                    StartCoroutine(GoToEndScreen());
+                }
+                else
+                {
+                    StartCoroutine(GoBackToLauncher());
+                }
             }
         }
     }
