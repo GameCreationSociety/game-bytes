@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &861816678848987087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861816678848987082}
+  - component: {fileID: 861816678848987081}
+  - component: {fileID: 861816678848987080}
+  m_Layer: 0
+  m_Name: Grid_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &861816678848987082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861816678848987087}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &861816678848987081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861816678848987087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e2ce76b67324a03a262bea98b8ffec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tile: {fileID: 5304829748521949273, guid: 58180fcc2da5f456894066d21cae176d, type: 3}
+--- !u!114 &861816678848987080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861816678848987087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aaa30addfa6c43f8a8060f5421e3df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  block1: {fileID: -5702482152349361811, guid: fe462a95f334b4ccaa7ad95e0e836d46, type: 3}
+  block2: {fileID: -568867579856210801, guid: 6bc443abaff1e45e3a0c9a2354180e2f, type: 3}
+  block3: {fileID: 2404560958777843361, guid: 0cb9c2706ea634c749cab228c575b3de, type: 3}
+  block4: {fileID: 2303712728688913171, guid: 1e01fd0801c26454b805e1162fd9eb22, type: 3}
+  block5: {fileID: -8924125913783948878, guid: 26d649bc3fe074143b3385b03f742554, type: 3}
+  block6: {fileID: 4151488542150515249, guid: 9906df95869644d10943821455d9703d, type: 3}
+  block7: {fileID: -5397910452332826942, guid: aa8941288a9bb4b268273371bd9f42cc, type: 3}
+  order1: []
+  order2: []

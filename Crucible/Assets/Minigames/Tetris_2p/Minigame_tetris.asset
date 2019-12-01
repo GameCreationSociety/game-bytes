@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e15ce27a3b28b498c2dcfffd025305, type: 3}
+  m_Name: Minigame_tetris
+  m_EditorClassIdentifier: 
+  Name: Tetris 2P
+  Description: 'Tetris 1v1
+
+    Score increments by clearing gray lines'
+  Year: 2019
+  Semester: 0
+  Thumbnail: {fileID: 21300000, guid: 8499923b16cc9f74da3218ea30d26b0f, type: 3}
+  CreatorNames: Daniel Zeng
+  P1_Objective: beat other person
+  P2_Objective: beat other person
+  P1_JoystickDescription: Move and rotate
+  P1_Button1Description: Harddrop
+  P1_Button2Description: Rotate
+  P2_JoystickDescription: Move and rotate
+  P2_Button1Description: Harddrop
+  P2_Button2Description: Rotate
+  GameScene:
+    sceneAsset: {fileID: 102900000, guid: d92ce7b0c8f6f43249f3490cc28cfea5, type: 3}
+    scenePath: Assets/Minigames/Tetris_2p/Tetris Scene.unity
+  SupportedGameModes: 4
+  ExcludeFromGameList: 0

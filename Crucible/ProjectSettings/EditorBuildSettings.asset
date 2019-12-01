@@ -12,18 +12,21 @@ EditorBuildSettings:
     path: Assets/Core/Scenes/MinigameLauncher.unity
     guid: 44720dd75ae23bb448cfcb51179a6382
   - enabled: 1
-    path: Assets/Minigames/MeteorMasher/MeteorMasher.unity
+    path: Assets/Minigames/MeteorMasher/Scene_MeteorMasher.unity
     guid: 7894d01622d3e8544b617f353661c4e9
   - enabled: 1
-    path: Assets/Minigames/Template/Scene_Template.unity
+    path: Assets/Minigames/_MinigameTemplate/Scene_Template.unity
     guid: da97d35142268994f97934479625f405
   - enabled: 1
     path: Assets/Core/Scenes/EndScreen.unity
     guid: 0b4d80be7927bbd49ad4e028d02a7719
   - enabled: 1
-    path: Assets/Minigames/Shotpot/Shotpot_Main.unity
+    path: Assets/Minigames/Shotpot/Scene_Shotpot.unity
     guid: 2c6974ac6aca6ea4f9aee7d98384362e
   - enabled: 1
-    path: Assets/Minigames/Test/TestMinigame.unity
+    path: Assets/Minigames/Test/Scene_TestMinigame.unity
     guid: fb03df26f001bfa43a4168ffa241461d
+  - enabled: 1
+    path: Assets/Minigames/Tetris_2p/Tetris Scene.unity
+    guid: d92ce7b0c8f6f43249f3490cc28cfea5
   m_configObjects: {}

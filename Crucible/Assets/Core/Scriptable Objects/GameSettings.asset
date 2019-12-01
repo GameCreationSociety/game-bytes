@@ -21,6 +21,7 @@ MonoBehaviour:
   AvailableMinigames:
   - {fileID: 11400000, guid: 67d503c469254d34081b979e9d1d4d46, type: 2}
   - {fileID: 11400000, guid: fd38740d239bd6a4f8f3b138c374d95e, type: 2}
+  - {fileID: 11400000, guid: d01c4ca6d42384c6c80fa45c37a1cfc2, type: 2}
   GameEndGraphicsWait: 3
   WinGraphicsPrefab: {fileID: 3757004447918800238, guid: 0b75b10dfa7586f468171c39b7f0fb01,
     type: 3}

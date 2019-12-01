@@ -152,13 +152,13 @@ MonoBehaviour:
   Settings: {fileID: 11400000, guid: 54aae246c8e29834bbd5810fe72c6980, type: 2}
   DurationSeconds: 60
   WinOnTimeEnd: 1
+  TimerPaused: 0
   TimerText: {fileID: 105138214}
   Score1Text: {fileID: 0}
   Score2Text: {fileID: 0}
   DEBUG_GamemodeToTest: 1
   CurrentGamemode: 0
   MinigameEnded: 0
-  TimerPaused: 0
 --- !u!4 &25541380
 Transform:
   m_ObjectHideFlags: 0

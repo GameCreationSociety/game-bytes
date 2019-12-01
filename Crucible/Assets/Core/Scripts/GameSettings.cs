@@ -37,6 +37,7 @@ public class GameSettings : ScriptableObject
         return ShuffledMinigames;
     }
 
+    #if UNITY_EDITOR 
     [Button]
     void RefreshAvailableMinigames()
     {
@@ -69,4 +70,5 @@ public class GameSettings : ScriptableObject
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
     }
+    #endif
 }

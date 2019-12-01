@@ -18,6 +18,18 @@ public class MinigameInputHelper : MonoBehaviour
         return (Mathf.Abs(AxisVal) > AxisDeadCutoff ? AxisVal : 0.0f); 
     }
 
+    static public bool IsHorizontalAxisInUse(int PlayerNumber)
+    {
+        float AxisVal = (PlayerNumber == 1 ? Input.GetAxis("P1_Horizontal") : Input.GetAxis("P2_Horizontal"));
+        return (Mathf.Abs(AxisVal) > AxisDeadCutoff);
+    }
+
+    static public bool IsVerticalAxisInUse(int PlayerNumber)
+    {
+        float AxisVal = (PlayerNumber == 1 ? Input.GetAxis("P1_Vertical") : Input.GetAxis("P2_Vertical"));
+        return (Mathf.Abs(AxisVal) > AxisDeadCutoff);
+    }
+
     static public bool IsButton1Down(int PlayerNumber)
     {
         return PlayerNumber == 1 ? Input.GetButtonDown("P1_Button1") : Input.GetButtonDown("P2_Button1");
