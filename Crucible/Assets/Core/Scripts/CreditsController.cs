@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CreditsController : UnitySingleton<CreditsController>
 {
@@ -31,6 +32,11 @@ public class CreditsController : UnitySingleton<CreditsController>
             StartCoroutine(ShowNextGame(transitionTime));
             transitionFlag = false;
         }
+    }
+
+    public void GoBack()
+    {
+        SceneTransitionController.Instance.TransitionToScene(Settings.StartScene);
     }
 
     private void PopulateUI(MinigameInfo miniGame) {

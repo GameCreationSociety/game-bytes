@@ -2616,8 +2616,7 @@ MonoBehaviour:
   P2Button2Text: {fileID: 1730646604}
   MinigameThumbnail: {fileID: 1041585533}
   CountdownTimerDuration: 3
-  DEBUG_MinigamePreview: {fileID: 11400000, guid: fd38740d239bd6a4f8f3b138c374d95e,
-    type: 2}
+  DEBUG_MinigamePreview: {fileID: 0}
 --- !u!1 &1085360822
 GameObject:
   m_ObjectHideFlags: 0

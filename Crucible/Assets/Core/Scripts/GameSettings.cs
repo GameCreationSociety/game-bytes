@@ -10,6 +10,8 @@ public class GameSettings : ScriptableObject
     [Header("Default Scenes")]
     public SceneReference MinigameLauncherScene;
     public SceneReference MinigameEndScene;
+    public SceneReference StartScene;
+    public SceneReference RockPaperNukeScene;
 
     [Header("Minigames")]
     public MinigameInfo[] AvailableMinigames;

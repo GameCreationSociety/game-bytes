@@ -18,8 +18,13 @@ MonoBehaviour:
   MinigameEndScene:
     sceneAsset: {fileID: 102900000, guid: 0b4d80be7927bbd49ad4e028d02a7719, type: 3}
     scenePath: Assets/Core/Scenes/EndScreen.unity
+  StartScene:
+    sceneAsset: {fileID: 102900000, guid: 542a8d19925e2d941bc4e2937004b8bb, type: 3}
+    scenePath: Assets/Core/Scenes/MainMenu.unity
+  RockPaperNukeScene:
+    sceneAsset: {fileID: 102900000, guid: f54537ccc63884c89b2925d06dda2924, type: 3}
+    scenePath: Assets/Core/Meta Games/Rock, Paper, Scissors, Nuke/RockPaperScissorsNuke.unity
   AvailableMinigames:
-  - {fileID: 11400000, guid: 67d503c469254d34081b979e9d1d4d46, type: 2}
   - {fileID: 11400000, guid: fd38740d239bd6a4f8f3b138c374d95e, type: 2}
   - {fileID: 11400000, guid: d01c4ca6d42384c6c80fa45c37a1cfc2, type: 2}
   GameEndGraphicsWait: 3

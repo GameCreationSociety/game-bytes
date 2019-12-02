@@ -33,9 +33,6 @@ public class EndScreenController : UnitySingleton<EndScreenController>
         StartCoroutine("RunEndScreen");
     }
 
-    // If one player won, return player name
-    // If both players won, return 'You both win!'
-    // If both players lost more than 50% of games played, return 'Better luck next time!'
     string WhoWonText()
     {
         int p1Score = GameState.Instance.MinigamesWonByP1;
@@ -43,28 +40,38 @@ public class EndScreenController : UnitySingleton<EndScreenController>
         int gamesPlayed = GameState.Instance.MinigamesPlayed;
         int gamesWon = GameState.Instance.MinigamesWon;
 
-        float percentWon = 0;
-        if (gamesPlayed != 0)
+        if (GameState.Instance.Gamemode == MinigameGamemodeTypes.TWOPLAYERVS)
         {
-            percentWon = gamesWon / gamesPlayed;
+            if (p1Score == p2Score)
+            {
+                return "Tie!";
+            }
+            else if (p1Score > p2Score)
+            {
+                return "Player 1 wins!";
+            }
+            else 
+            {
+                return "Player 2 wins!";
+            }
         }
+        // IF not vs, we currently assume a coop mode
+        else
+        {
+            float percentWon = 0;
+            if (gamesPlayed != 0)
+            {
+                percentWon = gamesWon / gamesPlayed;
+            }
 
-        if (percentWon < 0.5f)
-        {
-            return "You both lose! :(";
-        } else if (p1Score == p2Score)
-        {
-            return "You both win! :)";
-        } else if (p1Score > p2Score)
-        {
-            return "Player 1 wins!";
-        } else if (p2Score > p1Score)
-        {
-            return "Player 2 wins!";
-        } else
-        // for debugging 
-        {
-            return "_INVALID_WIN_STATE_";
+            if (percentWon < 0.5f)
+            {
+                return "You lose! :(";
+            }
+            else
+            {
+                return "You win! :)";
+            }
         }
     }
 

@@ -30,10 +30,14 @@ public class Shotpot_HotpotLiquid : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        collision.attachedRigidbody.AddForce(new Vector2(0,buoyancyForce * collision.attachedRigidbody.mass * 2 * Mathf.Sqrt(Mathf.Sqrt(Mathf.Sqrt(BoundsContainedPercentage(collision.bounds, col.bounds))))));
-        if(BoundsContainedPercentage(collision.bounds, col.bounds) < 0.6f)
+        if (collision.GetComponent<Shotpot_Food>())
         {
-            collision.attachedRigidbody.velocity *= 0.94f;
+            collision.attachedRigidbody.AddForce(new Vector2(0, buoyancyForce * collision.attachedRigidbody.mass * 2 * Mathf.Sqrt(Mathf.Sqrt(Mathf.Sqrt(BoundsContainedPercentage(collision.bounds, col.bounds))))));
+
+            if (BoundsContainedPercentage(collision.bounds, col.bounds) < 0.6f)
+            {
+                collision.attachedRigidbody.velocity *= 0.94f;
+            }
         }
     }
 

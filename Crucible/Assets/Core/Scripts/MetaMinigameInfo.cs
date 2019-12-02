@@ -36,7 +36,7 @@ public class MetaMinigameInfo : ScriptableObject
 
     [Header("Gameplay")]
     public SceneReference GameScene;
-    [EnumFlagsAttribute] public MinigameGamemodeTypes SupportedGameModes;
+    public MinigameGamemodeTypes SupportedGameModes;
 
     [Header("Dev Settings")]
     public bool ExcludeFromGameList;

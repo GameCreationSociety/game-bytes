@@ -31,4 +31,4 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 7894d01622d3e8544b617f353661c4e9, type: 3}
     scenePath: Assets/Minigames/MeteorMasher/Scene_MeteorMasher.unity
   SupportedGameModes: 2
-  ExcludeFromGameList: 0
+  ExcludeFromGameList: 1

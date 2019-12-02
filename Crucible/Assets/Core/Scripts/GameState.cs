@@ -30,12 +30,20 @@ public enum LastMetagameFinish
     NONE
 }
 
+[System.Serializable]
+public enum MinigameMode
+{
+    REGULAR,
+    ROCKPAPERNUKE
+}
+
 
 /** Persistent singleton (never deleted after creation) used to keep track the current state of the game. 
  *  If you are not the lead for the minigame project please DO NOT MODIFY this file. 
  *  Talk to the lead if you need something here to change.*/
 public class GameState : UnitySingletonPersistent<GameState>
 {
+    public MinigameMode CurrentMode;
     public LastMinigameFinish LastMinigameFinishState;
     public LastMetagameFinish LastMetagameFinishState;
     public int MinigamesWon = 0;
@@ -69,7 +77,7 @@ public class GameState : UnitySingletonPersistent<GameState>
         MinigamesWonByP2 = 0;
         LastMinigameFinishState = LastMinigameFinish.NONE;
         LastMetagameFinishState = LastMetagameFinish.NONE;
-        SelectedMinigames = new List<MinigameInfo>();
+        SelectedMinigames = new List<MinigameInfo>(NewSelectedMinigames);
         Gamemode = NewGamemode;
     }
 
