@@ -40,3 +40,5 @@ MonoBehaviour:
     type: 3}
   StartGameTransition: {fileID: 909209366899487215, guid: ed1182ff2220e0e49826db42b1a4517d,
     type: 3}
+  EndGameTransition: {fileID: 909209366899487215, guid: 6a36331e1c2bf4f4999ba57f80a971e0,
+    type: 3}

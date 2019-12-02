@@ -101,6 +101,8 @@ public class MinigameController : UnitySingleton<MinigameController>
     private IEnumerator GoToEndScreen()
     {
         yield return new WaitForSecondsRealtime(Settings.GameEndGraphicsWait);
+        Instantiate(Settings.EndGameTransition);
+        yield return new WaitForSecondsRealtime(1.0f);
         SceneManager.LoadScene(Settings.MinigameEndScene.ScenePath);
     }
 
@@ -177,6 +179,7 @@ public class MinigameController : UnitySingleton<MinigameController>
             default:
                 break;
         }
+        
     }
 
     private void Update()

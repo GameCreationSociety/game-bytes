@@ -78,7 +78,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 909209366899487208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1601151047622174832}
   - component: {fileID: 3226288570091412514}
   - component: {fileID: 4444168348923257973}
-  - component: {fileID: 973789075071809105}
+  - component: {fileID: 7960963738714169176}
   m_Layer: 5
   m_Name: TransitionScreenTop
   m_TagString: Untagged
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2226758070930076540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -155,6 +155,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 30aac7fc5de3727489c078d09d8c2c5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -164,8 +166,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!95 &973789075071809105
+--- !u!95 &7960963738714169176
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 2226758070930076540}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dc2e86e2753ea7c4e99a036abda0bc60, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8f14182850043724983bdd61efe68a3b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -195,7 +196,7 @@ GameObject:
   - component: {fileID: 3882856691107308968}
   - component: {fileID: 3666818730660766447}
   - component: {fileID: 1398209954297481507}
-  - component: {fileID: 3064608836263292240}
+  - component: {fileID: 3247674718852930278}
   m_Layer: 5
   m_Name: TransitionScreenBot
   m_TagString: Untagged
@@ -239,7 +240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8262446319831431558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -248,6 +249,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 30aac7fc5de3727489c078d09d8c2c5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -257,8 +260,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!95 &3064608836263292240
+--- !u!95 &3247674718852930278
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -268,7 +270,7 @@ Animator:
   m_GameObject: {fileID: 8262446319831431558}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 14c538ea4321bdb4eafcac8734a37ae0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 18fa8ab3d21d7b94e98ae515c91dc0c4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

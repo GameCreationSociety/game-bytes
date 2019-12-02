@@ -24,6 +24,7 @@ public class GameSettings : ScriptableObject
     public Transform TieGraphicsPrefab;
     public Transform P2WinGraphicsPrefab;
     public Transform StartGameTransition;
+    public Transform EndGameTransition;
 
     public MinigameInfo[] GetShuffledMinigames()
     {

@@ -57,7 +57,7 @@ public class CreditsController : UnitySingleton<CreditsController>
         // If we're not on the first minigame
         if (!startFlag) {
             // Fade previous game out for one second
-            for (float i = 2; i >= 0; i -= Time.deltaTime) {
+            for (float i = 1; i >= 0; i -= Time.deltaTime) {
                 // set color with i as alpha
                 MinigameNameText.color = new Color(1, 1, 1, i);
                 CreatorNameText.color = new Color(1, 1, 1, i);
@@ -72,7 +72,7 @@ public class CreditsController : UnitySingleton<CreditsController>
         PopulateUI(GetNextMinigame());
 
         // Fade next game in for one second
-        for (float i = 0; i <= 2; i += Time.deltaTime) {
+        for (float i = 0; i <= 1; i += Time.deltaTime) {
             // set color with i as alpha
             MinigameNameText.color = new Color(1, 1, 1, i);
             CreatorNameText.color = new Color(1, 1, 1, i);

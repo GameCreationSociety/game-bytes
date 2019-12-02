@@ -7,14 +7,34 @@ public class SceneTransitionController : UnitySingleton<SceneTransitionControlle
 {
     private Animator TransitionAnimator;
     private string TransitionTarget = "";
+    private AudioSource musicPlayer = null;
 
     void Start()
     {
         TransitionAnimator = GetComponent<Animator>();
+        musicPlayer = GetComponent<AudioSource>();
     }
 
+    public IEnumerator FadeOut(float FadeTime)
+    {
+        if (musicPlayer)
+        {
+            float startVolume = musicPlayer.volume;
+
+            while (musicPlayer.volume > 0)
+            {
+                musicPlayer.volume -= startVolume * Time.deltaTime / FadeTime;
+
+                yield return null;
+            }
+
+            musicPlayer.Stop();
+            musicPlayer.volume = startVolume;
+        }
+    }
     public void TransitionToScene(string ScenePath)
     {
+        StartCoroutine(FadeOut(1.0f));
         if (!IsTransitioning())
         {
             if (TransitionAnimator)

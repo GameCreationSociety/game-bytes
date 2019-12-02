@@ -15,6 +15,15 @@ public class GameController : UnitySingleton<GameController>
     [SerializeField] private MinigameInfo[] DEBUG_MinigamesToLaunch = null;
     [SerializeField] private MinigameGamemodeTypes DEBUG_TestGameMode;
 
+    private void Start()
+    {
+        if (!Application.isEditor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
     public void StartGame( MinigameGamemodeTypes GameModeSelected )
     {
         // We launch the debug minigame only if we are in the editor to make sure the build never uses a debug minigame
