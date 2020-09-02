@@ -16,7 +16,7 @@ TagManager:
   - 
   - Shotpot_Hand
   - Shotpot_Food
-  - 
+  - Marble
   - 
   - 
   - 
@@ -39,12 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: pieces
     uniqueID: 804178313
     locked: 0
   - name: background
     uniqueID: 4183222289
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0

@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
  *  Talk to the lead if you need something here to change.*/
 public class MinigameLauncherController : UnitySingleton<MinigameLauncherController>
 {
+    [SerializeField] GameSettings settings;
+
     [Header("UI Setup")]
     [SerializeField] private TextMeshProUGUI MinigameNameText = null;
     [SerializeField] private TextMeshProUGUI CreatorNameText = null;
@@ -26,18 +28,24 @@ public class MinigameLauncherController : UnitySingleton<MinigameLauncherControl
     [SerializeField] private TextMeshProUGUI P2JoystickText = null;
     [SerializeField] private TextMeshProUGUI P2Button1Text = null;
     [SerializeField] private TextMeshProUGUI P2Button2Text = null;
+    [SerializeField] private RectTransform QuitTransform = null;
     [SerializeField] private Image MinigameThumbnail  = null;
     [SerializeField] private float CountdownTimerDuration = 3;
+    [SerializeField] private float QuitTimerDuration = 1;
 
     [Header("Debug")]
     [SerializeField] private MinigameInfo DEBUG_MinigamePreview = null;
-    private float CountdownTimer;
+    private float CountdownTimer = 0;
+    private float QuitTimer = 0;
 
     bool P1Ready = false;
     bool P2Ready = false;
 
     void Start()
     {
+        //Reset the physics just in case any game messed with these settings
+        Physics2D.gravity = new Vector2(0,-9.82f);
+
         if (GameState.Instance.IsGameStateValid())
         {
             GameState.Instance.CurrentMinigame = GameState.Instance.SelectedMinigames[GameState.Instance.MinigamesPlayed];
@@ -88,15 +96,36 @@ public class MinigameLauncherController : UnitySingleton<MinigameLauncherControl
 
     void Update()
     {
-        if(Input.GetButtonDown("P1_Button1"))
+        if (QuitTimer > 0.0f)
+        {
+            QuitTimer -= Time.deltaTime;
+            QuitTransform.gameObject.SetActive(true);
+        }
+        else
+        {
+            QuitTransform.gameObject.SetActive(false);
+        }
+
+        if (Input.GetButtonDown("P1_Button1"))
         {
             P1Ready = true;
             P1ReadyText.SetText("Player 1" + (P1Ready ? " " : " NOT ") + "ready" + (P1Ready ? " " : "\n Press Button 1 To be ready "));
         }
         if (Input.GetButtonDown("P1_Button2"))
         {
-            P1Ready = false;
-            P1ReadyText.SetText("Player 1" + (P1Ready ? " " : " NOT ") + "ready" + (P1Ready ? " " : "\n Press Button 1 To be ready "));
+            if (P1Ready)
+            {
+                P1Ready = false;
+                P1ReadyText.SetText("Player 1" + (P1Ready ? " " : " NOT ") + "ready" + (P1Ready ? " " : "\n Press Button 1 To be ready "));
+            }
+            else if (QuitTimer > 0.0f)
+            {
+                SceneTransitionController.Instance.TransitionToScene(settings.StartScene.ScenePath);
+            }
+            else
+            {
+                QuitTimer = QuitTimerDuration;
+            }
         }
         if (Input.GetButtonDown("P2_Button1"))
         {
@@ -105,11 +134,27 @@ public class MinigameLauncherController : UnitySingleton<MinigameLauncherControl
         }
         if (Input.GetButtonDown("P2_Button2"))
         {
-            P2Ready = false;
-            P2ReadyText.SetText("Player 2" + (P2Ready ? " " : " NOT ") + "ready" + (P2Ready ? " " : "\n Press Button 1 To be ready "));
+            if (P2Ready)
+            {
+                P2Ready = false;
+                P2ReadyText.SetText("Player 2" + (P2Ready ? " " : " NOT ") + "ready" + (P2Ready ? " " : "\n Press Button 1 To be ready "));
+            }
+            else if(QuitTimer > 0.0f)
+            {
+                SceneTransitionController.Instance.TransitionToScene(settings.StartScene.ScenePath);
+            }
+            else
+            {
+                QuitTimer = QuitTimerDuration;
+            }
         }
 
-        if(P1Ready && P2Ready)
+        if (Input.GetButtonDown("P1_ButtonQuit") || Input.GetButtonDown("P2_ButtonQuit"))
+        {
+            SceneTransitionController.Instance.TransitionToScene(settings.StartScene.ScenePath);
+        }
+
+        if (P1Ready && P2Ready)
         {
             CountdownTimer -= Time.deltaTime;
             if(CountdownTimer <= 0.0f)

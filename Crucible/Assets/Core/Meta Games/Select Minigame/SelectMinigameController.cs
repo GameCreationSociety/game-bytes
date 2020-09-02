@@ -50,7 +50,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
             // minigameSelectionLocation.transform.localPosition = new Vector3(0, minigameSelectionLocation.transform.localPosition.y, minigameSelectionLocation.transform.localPosition.z);
         }
 
-        gamesToChooseFrom = GameState.Instance.SelectedMinigames;
+        //gamesToChooseFrom = GameState.Instance.SelectedMinigames;
 
         //TODO: change UI anchors on screen
         switch (GameState.Instance.LastMetagameFinishState) {
@@ -136,7 +136,7 @@ public class SelectMinigameController : UnitySingleton<SelectMinigameController>
 
     void LoadSelected() {
         //TODO: select minigamesplayed at index of selectedMinigames
-        GameState.Instance.SelectedMinigames.Add(gamesToChooseFrom[selected]);
+        GameState.Instance.SelectedMinigames[GameState.Instance.MinigamesPlayed] = (gamesToChooseFrom[selected]);
         SceneTransitionController.Instance.TransitionToScene("MinigameLauncher");
     }
 

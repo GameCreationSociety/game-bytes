@@ -17,6 +17,7 @@ public class GameController : UnitySingleton<GameController>
 
     private void Start()
     {
+        Random.InitState((int)System.DateTime.Now.Ticks);
         if (!Application.isEditor)
         {
             Cursor.lockState = CursorLockMode.Locked;

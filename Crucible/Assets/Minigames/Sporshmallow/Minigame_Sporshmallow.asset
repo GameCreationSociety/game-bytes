@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e15ce27a3b28b498c2dcfffd025305, type: 3}
+  m_Name: Minigame_Sporshmallow
+  m_EditorClassIdentifier: 
+  Name: Sporshmallow
+  Description: A marshallow-themed, Smash-like sports game.
+  Year: 2019
+  Semester: 0
+  Thumbnail: {fileID: 21300000, guid: 4a43995b1200546178aa0669636f1ea0, type: 3}
+  CreatorNames: Bella Laybourn, Gustavo Silvera, Sarah Pethani
+  P1_Objective: Win by gaining points from damaging the other player
+  P2_Objective: Win by gaining points from damaging the other player
+  P1_JoystickDescription: Move
+  P1_Button1Description: Attack
+  P1_Button2Description: Defense
+  P2_JoystickDescription: Move
+  P2_Button1Description: Attack
+  P2_Button2Description: Defense
+  GameScene:
+    sceneAsset: {fileID: 102900000, guid: 2390368bbfedc4333a45b515c5018e4e, type: 3}
+    scenePath: Assets/Minigames/Sparty/Scenes/GamePlay.unity
+  SupportedGameModes: 4
+  ExcludeFromGameList: 0

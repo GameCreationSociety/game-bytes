@@ -82,7 +82,7 @@ public class MinigameController : UnitySingleton<MinigameController>
             if(Score2Text) Score2Text.enabled = false;
         }
 
-        Instantiate(Settings.StartGameTransition);
+       Instantiate(Settings.StartGameTransition);
     }
 
     private IEnumerator GoBackToLauncher()
@@ -101,8 +101,6 @@ public class MinigameController : UnitySingleton<MinigameController>
     private IEnumerator GoToEndScreen()
     {
         yield return new WaitForSecondsRealtime(Settings.GameEndGraphicsWait);
-        Instantiate(Settings.EndGameTransition);
-        yield return new WaitForSecondsRealtime(1.0f);
         SceneManager.LoadScene(Settings.MinigameEndScene.ScenePath);
     }
 
@@ -143,7 +141,9 @@ public class MinigameController : UnitySingleton<MinigameController>
                 // to the minigame launcher
                 GameState.Instance.FinishMinigame(FinishState);
 
-                if (GameState.Instance.MinigamesPlayed >= GameState.Instance.SelectedMinigames.Count)
+                if (GameState.Instance.MinigamesPlayed >= GameState.Instance.SelectedMinigames.Count 
+                    || GameState.Instance.MinigamesWonByP1 > (GameState.Instance.SelectedMinigames.Count/2)
+                    || GameState.Instance.MinigamesWonByP2 > (GameState.Instance.SelectedMinigames.Count/2))
                 {
                     Debug.Log("Going back to the end screen");
                     StartCoroutine(GoToEndScreen());
@@ -179,6 +179,7 @@ public class MinigameController : UnitySingleton<MinigameController>
             default:
                 break;
         }
+        Instantiate(Settings.EndGameTransition);
         
     }
 

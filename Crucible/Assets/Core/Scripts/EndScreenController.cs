@@ -89,7 +89,7 @@ public class EndScreenController : UnitySingleton<EndScreenController>
     }
     void InputListener()
     {
-        if (Input.GetKeyDown(KeyCode.R) || Input.GetKey(KeyCode.Space))
+        if (MinigameInputHelper.IsButton1Down(1) || MinigameInputHelper.IsButton1Down(2))
         {
             //disable the confetti
             confetti.SetActive(false);
