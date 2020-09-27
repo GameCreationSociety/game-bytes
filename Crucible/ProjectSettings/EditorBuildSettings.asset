@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Core/Meta Games/Select Minigame/SelectMinigame.unity
     guid: 9c6865ee69bc544ae83ac34d51fbb1d7
   - enabled: 1
-    path: Assets/Minigames/Sparty/Scenes/Sporshmallow_Scene.unity
+    path: Assets/Minigames/Sporshmallow/Scenes/GamePlay.unity
     guid: 2390368bbfedc4333a45b515c5018e4e
   - enabled: 1
     path: Assets/Minigames/MarbleRoller/Scene_Platformer.unity
