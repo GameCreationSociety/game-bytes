@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e15ce27a3b28b498c2dcfffd025305, type: 3}
+  m_Name: Minigame_Bombastic
+  m_EditorClassIdentifier: 
+  Name: Bombastic
+  Description: Stick the other player with the bomb before the timer runs out or
+    you lose!
+  Year: 2020
+  Semester: 0
+  Thumbnail: {fileID: 21300000, guid: c571100db21596c4eb2d1a219435b68c, type: 3}
+  CreatorNames: Scott King, Nathan Oswell, Nicholas Hungria, Anqi Chen
+  P1_Objective: Stick the other player with the bomb!
+  P2_Objective: Stick the other player with the bomb!
+  P1_JoystickDescription: Movement
+  P1_Button1Description: Jump
+  P1_Button2Description: Dash
+  P2_JoystickDescription: Movement
+  P2_Button1Description: Jump
+  P2_Button2Description: Dash
+  GameScene:
+    sceneAsset: {fileID: 102900000, guid: 9eaacdca0a8e0df478fb1dfa252c8486, type: 3}
+    scenePath: Assets/Minigames/Bombastic/Scene_Bombastic.unity
+  SupportedGameModes: 4
+  ExcludeFromGameList: 1

@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/FruitFight/FruitScene.unity
     guid: d56df2ebd06f4cf47b4880791d287b35
+  - enabled: 1
+    path: Assets/Minigames/Bombastic/Scene_Bombastic.unity
+    guid: 9eaacdca0a8e0df478fb1dfa252c8486
   m_configObjects: {}

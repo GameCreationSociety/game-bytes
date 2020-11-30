@@ -26,6 +26,7 @@ MonoBehaviour:
     scenePath: Assets/Core/Meta Games/Rock, Paper, Scissors, Nuke/RockPaperScissorsNuke.unity
   AvailableMinigames:
   - {fileID: 11400000, guid: 9cbcfc4bd2daf6d4291c57e0b4c874b3, type: 2}
+  - {fileID: 11400000, guid: c4869def93aaa29459e4cf51717e4d6d, type: 2}
   GameEndGraphicsWait: 4
   WinGraphicsPrefab: {fileID: 3757004447918800238, guid: 0b75b10dfa7586f468171c39b7f0fb01,
     type: 3}
