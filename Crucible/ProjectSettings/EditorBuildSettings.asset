@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/MarbleRoller/Scene_Platformer.unity
     guid: 3a9d597f14280324891435720ad90af8
+  - enabled: 1
+    path: Assets/Minigames/FruitFight/FruitScene.unity
+    guid: d56df2ebd06f4cf47b4880791d287b35
   m_configObjects: {}
