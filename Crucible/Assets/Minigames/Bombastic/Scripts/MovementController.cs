@@ -12,7 +12,7 @@ public class MovementController : MonoBehaviour
     public float defaultMoveSpeed;
     public float defaultJumpForce;
     //scaling facotrs for movement -- affected by powerups
-    float moveSpeed;
+    public float moveSpeed;
     float jumpForce;
     //player in control of this object
     public int playerNumber;
@@ -68,7 +68,7 @@ public class MovementController : MonoBehaviour
             }
 
             //Jump input
-            if (MinigameInputHelper.IsButton1Down(playerNumber))
+            if (MinigameInputHelper.IsButton1Down(playerNumber) || MinigameInputHelper.GetVerticalAxis(playerNumber) == 1)
             {
 
                 //Only jumps if the player is not already jumping or falling

@@ -30,4 +30,4 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: d56df2ebd06f4cf47b4880791d287b35, type: 3}
     scenePath: Assets/Minigames/FruitFight/FruitScene.unity
   SupportedGameModes: 6
-  ExcludeFromGameList: 1
+  ExcludeFromGameList: 0

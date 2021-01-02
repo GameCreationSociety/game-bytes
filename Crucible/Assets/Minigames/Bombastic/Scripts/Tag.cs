@@ -24,21 +24,7 @@ public class Tag : MonoBehaviour
         movementController = GetComponent<MovementController>();
 
         thisSpriteRenderer = GetComponent<SpriteRenderer>();
-        /*
-        //sets the player that starts tagged to the appropriate sprite
-        if (isTagged)
-        {
-            bomb.GetComponent<SpriteRenderer>().enabled = true;
-            bomb.GetComponent<ParticleSystem>().Play();
-        }
-        else
-        {
-            //Set the player's score to 1 since they're currently winning
-            bomb.GetComponent<SpriteRenderer>().enabled = false;
-            bomb.GetComponent<ParticleSystem>().Stop();
-            MinigameController.Instance.AddScore(playerNumber, 1);
-        }
-        */
+       
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -52,6 +38,8 @@ public class Tag : MonoBehaviour
             bomb.GetComponent<ParticleSystem>().Play();
             movementController.stunned = true;
             movementController.stunTime = movementController.stunDuration;
+            movementController.defaultMoveSpeed += 1.5f;
+            movementController.moveSpeed += 1.5f;
 
         }
         //the tagged player should become untagged
@@ -61,6 +49,8 @@ public class Tag : MonoBehaviour
             MinigameController.Instance.AddScore(playerNumber, 1);
             bomb.GetComponent<SpriteRenderer>().enabled = false;
             bomb.GetComponent<ParticleSystem>().Stop();
+            movementController.defaultMoveSpeed -= 1.5f;
+            movementController.moveSpeed -= 1.5f;
         }
 
     }

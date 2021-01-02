@@ -22,6 +22,8 @@ public class initBomb : MonoBehaviour
             p1_bomb.GetComponent<SpriteRenderer>().enabled = true;
             p1_bomb.GetComponent<ParticleSystem>().Play();
             p1.gameObject.GetComponent<Tag>().isTagged = true;
+            p1.gameObject.GetComponent<MovementController>().defaultMoveSpeed += 1.5f;
+            p1.gameObject.GetComponent<MovementController>().moveSpeed += 1.5f;
 
             p2_bomb.GetComponent<SpriteRenderer>().enabled = false;
             p2_bomb.GetComponent<ParticleSystem>().Stop();

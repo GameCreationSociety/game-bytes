@@ -29,6 +29,6 @@ MonoBehaviour:
   P2_Button2Description: Dash
   GameScene:
     sceneAsset: {fileID: 102900000, guid: 9eaacdca0a8e0df478fb1dfa252c8486, type: 3}
-    scenePath: Assets/Minigames/Bombastic/Scene_Bombastic.unity
+    scenePath: Assets/Minigames/Bombastic/Bombastic Scene.unity
   SupportedGameModes: 4
-  ExcludeFromGameList: 1
+  ExcludeFromGameList: 0
