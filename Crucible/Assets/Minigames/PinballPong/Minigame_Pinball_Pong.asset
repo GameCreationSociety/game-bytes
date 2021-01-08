@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pinball Pong
   Description: Pong and pinball collide! Don't let the ball drop on your end of the
-    field! You can your paddle's flippers to make the ball bounce at all sorts of
-    funky angles.
+    field! You can use your paddle's flippers to make the ball bounce at all sorts
+    of funky angles.
   Year: 2020
   Semester: 0
   Thumbnail: {fileID: 21300000, guid: 196a06f38b3d96c478faf5ee0a1c98a8, type: 3}
