@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FWW : Obstacle
+public class Wall : Obstacle
 {
-
     void Start()
     {
         startPosition = transform.position;
-        heights[0] = 0;
-        heights[1] = 1;
-        heights[2] = 1;
+        height = 1;
     }
 
     void Update()
