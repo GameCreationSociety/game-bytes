@@ -11,8 +11,8 @@ public class Sprawner : MonoBehaviour
     void Start()
     {
         // import obstacles
-        FWW fww = GetComponentInChildren<FWW>();
-        obstacles.Add(fww);
+        //FWW fww = GetComponentInChildren<FWW>();
+        //obstacles.Add(fww);
 
         //currObstacle = fww;
         //currObstacle.isOnScreen = true;
