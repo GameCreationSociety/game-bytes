@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e15ce27a3b28b498c2dcfffd025305, type: 3}
+  m_Name: Minigame_Template
+  m_EditorClassIdentifier: 
+  Name: Test Minigame
+  Description: This is just a test of the minigame player functionality to make sure
+    everything works.
+  Year: 2019
+  Semester: 1
+  Thumbnail: {fileID: 21300000, guid: 05d2b34c5d3a365448761905bbad7958, type: 3}
+  CreatorNames: Jan Orlowski
+  P1_Objective: Press Button 1 to Win
+  P2_Objective: Press Button 1 to Win
+  P1_JoystickDescription: None
+  P1_Button1Description: Win
+  P1_Button2Description: None
+  P2_JoystickDescription: None
+  P2_Button1Description: Win
+  P2_Button2Description: None
+  GameScene:
+    sceneAsset: {fileID: 102900000, guid: da97d35142268994f97934479625f405, type: 3}
+    scenePath: Assets/Minigames/Template/Scene_Template.unity
+  SupportedGameModes: 2
+  ExcludeFromGameList: 1

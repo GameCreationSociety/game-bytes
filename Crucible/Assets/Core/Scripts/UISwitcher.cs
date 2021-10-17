@@ -32,7 +32,7 @@ public class UISwitcher : MonoBehaviour
     {
         if(Input.anyKeyDown && EventSystem.current.currentSelectedGameObject == null && CurrentIndex >= 0)
         {
-            SwitcherChildren[CurrentIndex].SelectOnSwitch.Select();
+            //SwitcherChildren[CurrentIndex].SelectOnSwitch.Select();
         }
     }
 

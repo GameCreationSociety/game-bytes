@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - holes
+  - powerUp
+  - fruit
+  - star
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -17,11 +21,11 @@ TagManager:
   - Shotpot_Hand
   - Shotpot_Food
   - Marble
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wall_tall
+  - Wall
+  - Wall_down
+  - Hole
+  - Hole_deep
   - 
   - 
   - 
