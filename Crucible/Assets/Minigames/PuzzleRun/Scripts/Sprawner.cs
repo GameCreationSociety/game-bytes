@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Sprawner : MonoBehaviour
 {
-    public float interval;
-    public float timePassed = 0;
+    private float interval;
+    private float timePassed = 0;
 
     public GameObject obstacleRef1;
     public Vector3 obstacleRef1Pos;
@@ -20,11 +20,11 @@ public class Sprawner : MonoBehaviour
     public GameObject[] obstaclePool = new GameObject[5];
     public GameObject[] buttonPool = new GameObject[3];
 
-    public int obstacle_mode = 0;
-    public bool player1_obstacle = false;
-    public bool player2_obstacle = false;
-    public bool player1_button = false;
-    public bool player2_button = false;
+    private int obstacle_mode = 0;
+    private bool player1_obstacle = false;
+    private bool player2_obstacle = false;
+    private bool player1_button = false;
+    private bool player2_button = false;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class Sprawner : MonoBehaviour
         obstacleRef2Pos = obstacleRef2.transform.position;
         buttonRef1Pos = buttonRef1.transform.position;
         buttonRef2Pos = buttonRef2.transform.position;
-        interval = 5;
+        interval = 3f;
 
         // decide which player gets obstacle and which gets button:
         getObstacleMode();
@@ -87,23 +87,63 @@ public class Sprawner : MonoBehaviour
 
     void SprawnObstacles(int playerNumber)
     {
+        int lane1 = Random.Range(0, 3);
+        int lane2 = Random.Range(0, 3);
         if (playerNumber == 1)
         {
+            GameObject[] curr_obstacles1 = new GameObject[3];
+            bool allFlat1 = true;
             for (int i = 0; i < 3; i++)
             {
-                int index = Random.Range(0, 5);
-                GameObject currObstacle = obstaclePool[index];
-                Instantiate(currObstacle, obstacleRef1Pos + laneSeparation * i, Quaternion.identity);
+                if (obstacle_mode == 0 && i == lane1)
+                {
+                    curr_obstacles1[i] = obstaclePool[2];
+                }
+                else
+                {
+                    int obs_i = Random.Range(1, 4);
+                    curr_obstacles1[i] = obstaclePool[obs_i];
+                    if (obs_i != 2) allFlat1 = false;
+                }
+            }
+            if (allFlat1) 
+            {
+                int obs_i = Random.Range(0, 1) * 2 + 1;
+                int i = Random.Range(0, 3);
+                curr_obstacles1[i] = obstaclePool[obs_i]; 
+            }
+            for (int i = 0; i < 3; i++) 
+            {
+                Instantiate(curr_obstacles1[i], obstacleRef1Pos + laneSeparation * i, Quaternion.identity);
                 timePassed = 0;
             }
         }
         else if (playerNumber == 2)
         {
+            GameObject[] curr_obstacles2 = new GameObject[3];
+            bool allFlat2 = true;
             for (int i = 0; i < 3; i++)
             {
-                int index = Random.Range(0, 5);
-                GameObject currObstacle = obstaclePool[index];
-                Instantiate(currObstacle, obstacleRef2Pos + laneSeparation * i, Quaternion.identity);
+                if (obstacle_mode == 0 && i == lane2)
+                {
+                    curr_obstacles2[i] = obstaclePool[2];
+                }
+                else
+                {
+                    int obs_i = Random.Range(1, 4);
+                    curr_obstacles2[i] = obstaclePool[obs_i];
+                    if (obs_i != 2) allFlat2 = false;
+                }
+            }
+            if (allFlat2)
+            {
+                int obs_i = Random.Range(0, 1) * 2 + 1;
+                int i = Random.Range(0, 3);
+                curr_obstacles2[i] = obstaclePool[obs_i];
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                Instantiate(curr_obstacles2[i], obstacleRef2Pos + laneSeparation * i, Quaternion.identity);
                 timePassed = 0;
             }
         }

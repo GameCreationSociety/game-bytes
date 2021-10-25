@@ -97,9 +97,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d395383cb6eb57b4ebc5a01ba7cbe5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  change: 0
+  change: -1
   button: {fileID: 0}
   destroyPos: -10
+  laneNumber: 0
+  buttonRef1: {fileID: 0}
+  buttonRef1Pos: {x: 0, y: 0, z: 0}
+  buttonRef2: {fileID: 0}
+  buttonRef2Pos: {x: 0, y: 0, z: 0}
+  laneSeparation: {x: 1.59, y: 0, z: 0}
+  spriteArray:
+  - {fileID: 21300000, guid: 04228fcbda7dd384b8a1ec51dc2a3b53, type: 3}
+  - {fileID: 21300000, guid: f89b347fc75f9c84db565adcd5df698d, type: 3}
+  - {fileID: 21300000, guid: 7f5d97da87571394a9063fde3563c865, type: 3}
+  - {fileID: 21300000, guid: d27445467935e0e4cb266054069d4997, type: 3}
+  - {fileID: 21300000, guid: 3c330a361a67958409227e2c19a60b62, type: 3}
 --- !u!61 &2299338093717208466
 BoxCollider2D:
   m_ObjectHideFlags: 0

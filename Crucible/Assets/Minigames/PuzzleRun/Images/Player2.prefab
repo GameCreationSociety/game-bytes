@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1981919061624869095}
   - component: {fileID: 3008646169979045398}
+  - component: {fileID: 2021610645}
   m_Layer: 9
   m_Name: Player2
   m_TagString: holes
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7962877729192075703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1953125, y: 0.1953125, z: 1}
+  m_LocalScale: {x: 0.5559918, y: 0.9143994, z: 1.5896032}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,3 +83,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2021610645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962877729192075703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cd0ad5ebdf52c4f897e7c8d4a2e1f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laneNumber: 1
+  movement: {x: 1.59, y: 0, z: 0}

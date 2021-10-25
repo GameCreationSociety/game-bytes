@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player2 : MonoBehaviour
 {
     public int laneNumber = 4;
-    public Vector3 movement = new Vector3(1.3f, 0, 0);
+    public Vector3 movement = new Vector3(1.59f, 0.0f, 0.0f);
 
     // Start is called before the first frame update
     void Start()

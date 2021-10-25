@@ -144,8 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c036daad35dfdf41a26403dd83caa35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 0
-  spriteArray: []
+  obstacleRef1: {fileID: 0}
+  obstacleRef1Pos: {x: 0, y: 0, z: 0}
+  obstacleRef2: {fileID: 0}
+  obstacleRef2Pos: {x: 0, y: 0, z: 0}
+  laneSeparation: {x: 1.59, y: 0, z: 0}
+  height: 1
   obstacle: {fileID: 0}
-  destroyRef: {fileID: 0}
   destroyPos: -10
+  laneNumber: 0
+  lowerbound: 0
+  upperbound: 0.2
