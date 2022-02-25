@@ -1,32 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MeteorMasher_Planet : MonoBehaviour
+namespace MeteorMasher
 {
-    // We set the sprite that will be used for shield in the inspector
-    [SerializeField] private SpriteRenderer ShieldSprite = null;
-    private bool HasShield = true;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class MeteorMasher_Planet : MonoBehaviour
     {
-        // Did we hit a meteor?
-        if (collision.GetComponent<MeteorMasher_Meteor>())
-        {   
-            // Destroy the meteor that hit us so that we don't collide with it again
-            Destroy(collision.gameObject);
-            if (HasShield)
-            {
-                //Hide shield sprite since our shield is being turned off
-                ShieldSprite.enabled = false;
+        // We set the sprite that will be used for shield in the inspector
+        [SerializeField] private SpriteRenderer ShieldSprite = null;
+        private bool HasShield = true;
 
-                // Remove shield so next hit kills us
-                HasShield = false;
-            }
-            else
-            {
-                // Lose the game!
-                MinigameController.Instance.FinishGame(LastMinigameFinish.LOST);
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            // Did we hit a meteor?
+            if (collision.GetComponent<MeteorMasher_Meteor>())
+            {   
+                // Destroy the meteor that hit us so that we don't collide with it again
+                Destroy(collision.gameObject);
+                if (HasShield)
+                {
+                    //Hide shield sprite since our shield is being turned off
+                    ShieldSprite.enabled = false;
+
+                    // Remove shield so next hit kills us
+                    HasShield = false;
+                }
+                else
+                {
+                    // Lose the game!
+                    MinigameController.Instance.FinishGame(LastMinigameFinish.LOST);
+                }
             }
         }
     }

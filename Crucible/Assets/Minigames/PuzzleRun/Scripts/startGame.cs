@@ -1,31 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class startGame : MonoBehaviour
+namespace PuzzleRun
 {
-    public Image image;
-
-    // Start is called before the first frame update
-    void Start()
+    public class startGame : MonoBehaviour
     {
-        Time.timeScale = 0;
-    }
+        public Image image;
 
-    // Update is called once per frame
-    void Update()
-    {
-        image = GetComponent<Image>();
-        var tempColor = image.color;
-        tempColor.a -= 0.01f;
-        image.color = tempColor;
-
-        if (image.color.a <= 0)
+        // Start is called before the first frame update
+        void Start()
         {
-            Time.timeScale = 1;
-            Destroy(gameObject);
+            Time.timeScale = 0;
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+            image = GetComponent<Image>();
+            var tempColor = image.color;
+            tempColor.a -= 0.01f;
+            image.color = tempColor;
+
+            if (image.color.a <= 0)
+            {
+                Time.timeScale = 1;
+                Destroy(gameObject);
+            }
+
+        }
     }
 }

@@ -1,56 +1,57 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Player2Movement : MonoBehaviour
-{   
-    public float speed = 10f;
-    public float jumpHeight = 5f;
-    public bool isGrounded = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Jump();
-        Vector3 movement = new Vector3(Input.GetAxis("P2_Horizontal"), 0f, 0f);
-        transform.position += movement * Time.deltaTime * speed;
-    }
-
-    void Jump()
-    {
-        if(Input.GetButtonDown("P2_Vertical") && isGrounded == true)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+namespace StarFall
+{
+    public class Player2Movement : MonoBehaviour
     {   
-        if(collision.collider.tag == "StarFall-star")
+        public float speed = 10f;
+        public float jumpHeight = 5f;
+        public bool isGrounded = false;
+        // Start is called before the first frame update
+        void Start()
         {
-            getPoint(collision.collider.gameObject);
+        
         }
-        if(collision.collider.tag == "StarFall-meteor")
+
+        // Update is called once per frame
+        void Update()
         {
-            losePoint(collision.collider.gameObject);
+            Jump();
+            Vector3 movement = new Vector3(Input.GetAxis("P2_Horizontal"), 0f, 0f);
+            transform.position += movement * Time.deltaTime * speed;
         }
+
+        void Jump()
+        {
+            if(Input.GetButtonDown("P2_Vertical") && isGrounded == true)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {   
+            if(collision.collider.tag == "StarFall-star")
+            {
+                getPoint(collision.collider.gameObject);
+            }
+            if(collision.collider.tag == "StarFall-meteor")
+            {
+                losePoint(collision.collider.gameObject);
+            }
+        }
+
+        void getPoint(GameObject star)
+        {
+            Destroy(star);
+            MinigameController.Instance.AddScore(2, 1);
+        }
+
+        void losePoint(GameObject metor)
+        {
+            MinigameController.Instance.AddScore(2, -1);
+        }
+
+
     }
-
-    void getPoint(GameObject star)
-    {
-        Destroy(star);
-        MinigameController.Instance.AddScore(2, 1);
-    }
-
-    void losePoint(GameObject metor)
-    {
-        MinigameController.Instance.AddScore(2, -1);
-    }
-
-
 }

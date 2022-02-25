@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TimedDestroy : MonoBehaviour
+namespace Shotpot
 {
-    public float timeLeft = 1;
+	public class TimedDestroy : MonoBehaviour
+	{
+		public float timeLeft = 1;
 	
-	// Update is called once per frame
-	void Update ()
-    {
-		timeLeft -= Time.deltaTime;
-        if(timeLeft <= 0)
-        {
-            Destroy(gameObject);
-        }
+		// Update is called once per frame
+		void Update ()
+		{
+			timeLeft -= Time.deltaTime;
+			if(timeLeft <= 0)
+			{
+				Destroy(gameObject);
+			}
+		}
 	}
 }

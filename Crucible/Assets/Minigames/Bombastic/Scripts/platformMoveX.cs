@@ -1,39 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class platformMoveX : MonoBehaviour
+namespace Bombastic
 {
-    Rigidbody2D thisRigidBody;
-
-    public float speed;
-    public float leftBound;
-    public float rightBound;
-
-    public bool moveRightFirst;
-    bool moveRight;
-    Vector3 movementVector;
-
-    // Start is called before the first frame update
-    void Start()
+    public class platformMoveX : MonoBehaviour
     {
-        thisRigidBody = GetComponent<Rigidbody2D>();
-        bool moveRight = moveRightFirst;
-    }
+        Rigidbody2D thisRigidBody;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (moveRight)
+        public float speed;
+        public float leftBound;
+        public float rightBound;
+
+        public bool moveRightFirst;
+        bool moveRight;
+        Vector3 movementVector;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            movementVector = Vector3.right * speed;
-        } else
-        {
-            movementVector = Vector3.left * speed;
+            thisRigidBody = GetComponent<Rigidbody2D>();
+            bool moveRight = moveRightFirst;
         }
-        thisRigidBody.velocity = movementVector;
-        if (transform.position.x >= rightBound) moveRight = false;
-        if (transform.position.x <= leftBound) moveRight = true;
 
+        // Update is called once per frame
+        void Update()
+        {
+            if (moveRight)
+            {
+                movementVector = Vector3.right * speed;
+            } else
+            {
+                movementVector = Vector3.left * speed;
+            }
+            thisRigidBody.velocity = movementVector;
+            if (transform.position.x >= rightBound) moveRight = false;
+            if (transform.position.x <= leftBound) moveRight = true;
+
+        }
     }
 }

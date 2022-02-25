@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class LevelState
+﻿namespace Tempo
 {
-    public static string beatMapFilename;
-    public static string songFilename;
+    public class LevelState
+    {
+        public static string beatMapFilename;
+        public static string songFilename;
+    }
 }

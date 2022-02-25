@@ -1,25 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FrogDrummer : MonoBehaviour
+namespace Tempo
 {
-    public Sprite[] sprites;
-    public SpriteRenderer render;
-    // Start is called before the first frame update
+    public class FrogDrummer : MonoBehaviour
+    {
+        public Sprite[] sprites;
+        public SpriteRenderer render;
+        // Start is called before the first frame update
 
-    public void selectSprite(int spriteNum)
-    {
-        render.sprite = sprites[spriteNum];
-    }
-    void Start()
-    {
-        render = gameObject.GetComponent<SpriteRenderer>();
-    }
+        public void selectSprite(int spriteNum)
+        {
+            render.sprite = sprites[spriteNum];
+        }
+        void Start()
+        {
+            render = gameObject.GetComponent<SpriteRenderer>();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

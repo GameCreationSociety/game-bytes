@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shotpot_GravityOverride : MonoBehaviour
+namespace Shotpot
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Shotpot_GravityOverride : MonoBehaviour
     {
-        Physics2D.gravity = new Vector2(0,-19.62f);
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            Physics2D.gravity = new Vector2(0,-19.62f);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

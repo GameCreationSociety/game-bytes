@@ -3,77 +3,80 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[System.Serializable]
-public struct FoodItem
+namespace Shotpot
 {
-    public Shotpot_Food foodToSpawn;
-    public float weight;
-}
-
-[System.Serializable]
-public struct FoodWave
-{
-    public int foodCount;
-    public float waitTime;
-}
-
-
-public class Shotpot_FoodSpawner : MonoBehaviour
-{
-    [Header("Food Settings")]
-    [SerializeField] private FoodItem[] foodsToSpawn = null;
-    [SerializeField] private FoodWave[] foodWaves = null;
-    [SerializeField] private Collider2D spawnZone = null;
-    private int waveCounter = 0;
-
-    IEnumerator SpawnFoodos()
+    [System.Serializable]
+    public struct FoodItem
     {
-        yield return new WaitForSeconds(foodWaves[waveCounter].waitTime);
-        SpawnWave(foodWaves[waveCounter]);
-        waveCounter++;
-        if(waveCounter < foodWaves.Length)
-        {
-           yield return SpawnFoodos();
-        }
+        public Shotpot_Food foodToSpawn;
+        public float weight;
     }
 
-    FoodItem ChooseFood(FoodItem[] probs)
+    [System.Serializable]
+    public struct FoodWave
     {
-        float total = 0;
+        public int foodCount;
+        public float waitTime;
+    }
 
-        foreach (FoodItem elem in probs)
+
+    public class Shotpot_FoodSpawner : MonoBehaviour
+    {
+        [Header("Food Settings")]
+        [SerializeField] private FoodItem[] foodsToSpawn = null;
+        [SerializeField] private FoodWave[] foodWaves = null;
+        [SerializeField] private Collider2D spawnZone = null;
+        private int waveCounter = 0;
+
+        IEnumerator SpawnFoodos()
         {
-            total += elem.weight;
-        }
-
-        float randomPoint = Random.value * total;
-
-        for (int i = 0; i < probs.Length; i++)
-        {
-            if (randomPoint < probs[i].weight)
+            yield return new WaitForSeconds(foodWaves[waveCounter].waitTime);
+            SpawnWave(foodWaves[waveCounter]);
+            waveCounter++;
+            if(waveCounter < foodWaves.Length)
             {
-                return probs[i];
-            }
-            else
-            {
-                randomPoint -= probs[i].weight;
+                yield return SpawnFoodos();
             }
         }
-        return probs[probs.Length - 1];
-    }
 
-    void SpawnWave(FoodWave wave)
-    {
-        for(int i = 0; i < wave.foodCount; i++)
+        FoodItem ChooseFood(FoodItem[] probs)
         {
-            Vector3 min = spawnZone.bounds.min;
-            Vector3 max = spawnZone.bounds.max;
-            Instantiate(ChooseFood(foodsToSpawn).foodToSpawn, new Vector3(Random.Range(min.x, max.x),Random.Range(min.y, max.y),Random.Range(min.z, max.z)) , new Quaternion());
-        }
-    }
+            float total = 0;
 
-    void Start()
-    {
-        StartCoroutine(SpawnFoodos());
+            foreach (FoodItem elem in probs)
+            {
+                total += elem.weight;
+            }
+
+            float randomPoint = Random.value * total;
+
+            for (int i = 0; i < probs.Length; i++)
+            {
+                if (randomPoint < probs[i].weight)
+                {
+                    return probs[i];
+                }
+                else
+                {
+                    randomPoint -= probs[i].weight;
+                }
+            }
+            return probs[probs.Length - 1];
+        }
+
+        void SpawnWave(FoodWave wave)
+        {
+            for(int i = 0; i < wave.foodCount; i++)
+            {
+                Vector3 min = spawnZone.bounds.min;
+                Vector3 max = spawnZone.bounds.max;
+                Instantiate(ChooseFood(foodsToSpawn).foodToSpawn, new Vector3(Random.Range(min.x, max.x),Random.Range(min.y, max.y),Random.Range(min.z, max.z)) , new Quaternion());
+            }
+        }
+
+        void Start()
+        {
+            StartCoroutine(SpawnFoodos());
+        }
     }
 }

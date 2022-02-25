@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shotpot_Food : MonoBehaviour
+namespace Shotpot
 {
-    public int score = 1;
-    public string foodName = "Garbage";
-
-    public bool canBeScored()
+    public class Shotpot_Food : MonoBehaviour
     {
-        return true;
+        public int score = 1;
+        public string foodName = "Garbage";
+
+        public bool canBeScored()
+        {
+            return true;
+        }
     }
 }

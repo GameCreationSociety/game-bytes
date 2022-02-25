@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shotpot_FoodDestroyer : MonoBehaviour
+namespace Shotpot
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class Shotpot_FoodDestroyer : MonoBehaviour
     {
-        if(collision.transform.GetComponent<Shotpot_Food>()||collision.transform.GetComponentInParent<Shotpot_Food>())
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            Destroy(collision.gameObject);
+            if(collision.transform.GetComponent<Shotpot_Food>()||collision.transform.GetComponentInParent<Shotpot_Food>())
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

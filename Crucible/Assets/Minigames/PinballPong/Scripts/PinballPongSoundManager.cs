@@ -1,43 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PinballPongSoundManager : MonoBehaviour
+namespace PinballPong
 {
-
-    public static PinballPongSoundManager S;
-
-    private AudioSource a;
-
-    public AudioClip wallBounceSound;
-    public AudioClip paddleBounceSound;
-
-    public AudioClip deathSound;
-
-    // Start is called before the first frame update
-    void Awake()
+    public class PinballPongSoundManager : MonoBehaviour
     {
-        // Singleton definition
-        if (PinballPongSoundManager.S)
-            Destroy(gameObject);
-        else
-            S = this; 
 
-        a = gameObject.GetComponent<AudioSource>();
-    }
+        public static PinballPongSoundManager S;
 
-    public void PlayWallBounceSound()
-    {
-        a.PlayOneShot(wallBounceSound);
-    }
+        private AudioSource a;
 
-    public void PlayPaddleBounceSound()
-    {
-        a.PlayOneShot(paddleBounceSound);
-    }
+        public AudioClip wallBounceSound;
+        public AudioClip paddleBounceSound;
 
-    public void PlayDeathSound()
-    {
-        a.PlayOneShot(deathSound);
+        public AudioClip deathSound;
+
+        // Start is called before the first frame update
+        void Awake()
+        {
+            // Singleton definition
+            if (PinballPongSoundManager.S)
+                Destroy(gameObject);
+            else
+                S = this; 
+
+            a = gameObject.GetComponent<AudioSource>();
+        }
+
+        public void PlayWallBounceSound()
+        {
+            a.PlayOneShot(wallBounceSound);
+        }
+
+        public void PlayPaddleBounceSound()
+        {
+            a.PlayOneShot(paddleBounceSound);
+        }
+
+        public void PlayDeathSound()
+        {
+            a.PlayOneShot(deathSound);
+        }
     }
 }

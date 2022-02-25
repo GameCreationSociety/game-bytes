@@ -1,25 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class bombSound : MonoBehaviour
+namespace Bombastic
 {
-    private bool hasPlayed = false;
-    public AudioSource explosion;
-
-    // Start is called before the first frame update
-    void Start()
+    public class bombSound : MonoBehaviour
     {
-        
-    }
+        private bool hasPlayed = false;
+        public AudioSource explosion;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (MinigameController.Instance.GetElapsedTime() > 59.9 && !hasPlayed)
+        // Start is called before the first frame update
+        void Start()
         {
-            hasPlayed = true;
-            explosion.Play();
+        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (MinigameController.Instance.GetElapsedTime() > 59.9 && !hasPlayed)
+            {
+                hasPlayed = true;
+                explosion.Play();
+            }
         }
     }
 }

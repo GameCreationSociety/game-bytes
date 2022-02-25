@@ -1,38 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class initiate_End : MonoBehaviour
+namespace MarbleRoller
 {
+    public class initiate_End : MonoBehaviour
+    {
    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
+        // Start is called before the first frame update
+        void Start()
         {
-            Movement m = collision.GetComponent<Movement>();
-            if (m)
+        
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == "Player")
             {
-                if (m.playerNumber == 1)
+                Movement m = collision.GetComponent<Movement>();
+                if (m)
                 {
-                    MinigameController.Instance.FinishGame(LastMinigameFinish.P1WIN);
-                }
-                else if (m.playerNumber == 2)
-                {
-                    MinigameController.Instance.FinishGame(LastMinigameFinish.P2WIN);
+                    if (m.playerNumber == 1)
+                    {
+                        MinigameController.Instance.FinishGame(LastMinigameFinish.P1WIN);
+                    }
+                    else if (m.playerNumber == 2)
+                    {
+                        MinigameController.Instance.FinishGame(LastMinigameFinish.P2WIN);
+                    }
                 }
             }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
            
+        }
     }
 }

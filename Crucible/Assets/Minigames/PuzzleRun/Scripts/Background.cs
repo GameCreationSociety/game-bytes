@@ -1,30 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Background : MonoBehaviour
+namespace PuzzleRun
 {
-    public Rigidbody2D background;
-    public float startPos, length;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Background : MonoBehaviour
     {
-        background = gameObject.GetComponent<Rigidbody2D>();
-        background.velocity = Vector2.down * 4f;
-        startPos = transform.position.y;
-        length = GetComponent<SpriteRenderer>().bounds.size.y;
-    }
+        public Rigidbody2D background;
+        public float startPos, length;
 
-    // Update is called once per frame
-    void Update()
-    {
-        background.velocity += Vector2.down * 0.00015f;
-        if (transform.position.y < -5.08)
+        // Start is called before the first frame update
+        void Start()
         {
-            transform.position = new Vector3(transform.position.x,
-                startPos,
-                transform.position.z);
+            background = gameObject.GetComponent<Rigidbody2D>();
+            background.velocity = Vector2.down * 4f;
+            startPos = transform.position.y;
+            length = GetComponent<SpriteRenderer>().bounds.size.y;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            background.velocity += Vector2.down * 0.00015f;
+            if (transform.position.y < -5.08)
+            {
+                transform.position = new Vector3(transform.position.x,
+                    startPos,
+                    transform.position.z);
+            }
         }
     }
 }

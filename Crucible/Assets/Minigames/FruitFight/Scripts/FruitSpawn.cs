@@ -1,44 +1,44 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FruitSpawn : MonoBehaviour
+namespace FruitFight
 {
-    public GameObject[] fruit_prefabs;
-    public float x_min; 
-    public float x_max;
-    public float z_min;
-    public float z_max;
-    public float y;
-    public float interval_min;
-    public float interval_max;
-    AudioSource audio; 
-
-    // Start is called before the first frame update
-    void Start()
+    public class FruitSpawn : MonoBehaviour
     {
-        audio = GetComponent<AudioSource>();
+        public GameObject[] fruit_prefabs;
+        public float x_min; 
+        public float x_max;
+        public float z_min;
+        public float z_max;
+        public float y;
+        public float interval_min;
+        public float interval_max;
+        AudioSource audio; 
 
-        Invoke("SpawnRandom", UnityEngine.Random.Range(interval_min, interval_max));
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            audio = GetComponent<AudioSource>();
 
-    // Update is called once per frame
-    void Update()
-    {
+            Invoke("SpawnRandom", UnityEngine.Random.Range(interval_min, interval_max));
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
         
-    }
+        }
 
-    void SpawnRandom()
-    {
+        void SpawnRandom()
+        {
 
-        float x = UnityEngine.Random.Range(x_min, x_max);
-        float z = UnityEngine.Random.Range(z_min, z_max);
+            float x = UnityEngine.Random.Range(x_min, x_max);
+            float z = UnityEngine.Random.Range(z_min, z_max);
 
-        Instantiate(fruit_prefabs[UnityEngine.Random.Range(0, fruit_prefabs.Length)], new Vector3(x, y, z), Quaternion.identity);
-        audio.Play();
+            Instantiate(fruit_prefabs[UnityEngine.Random.Range(0, fruit_prefabs.Length)], new Vector3(x, y, z), Quaternion.identity);
+            audio.Play();
 
-        Invoke("SpawnRandom", UnityEngine.Random.Range(interval_min, interval_max));
+            Invoke("SpawnRandom", UnityEngine.Random.Range(interval_min, interval_max));
 
+        }
     }
 }

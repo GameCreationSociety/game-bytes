@@ -1,34 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Tetromino_2 : MonoBehaviour
+namespace Tetris_2p
 {
-    float fallTime;
-    private bool isVerticalReset = true;
-    private float time = 0.0f;
-    private float nextMove = 0.075f;
-    private float nextMoveDelta = 0.075f;
-    public float fallSpeed = 1;
-    public bool whereSpawn;
-    public bool O;
-    // Start is called before the first frame update
-    void Start()
+    public class Tetromino_2 : MonoBehaviour
     {
-        fallTime = Time.time;
-    }
+        float fallTime;
+        private bool isVerticalReset = true;
+        private float time = 0.0f;
+        private float nextMove = 0.075f;
+        private float nextMoveDelta = 0.075f;
+        public float fallSpeed = 1;
+        public bool whereSpawn;
+        public bool O;
+        // Start is called before the first frame update
+        void Start()
+        {
+            fallTime = Time.time;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        CheckUserInput();
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            CheckUserInput();
+        }
 
-    void CheckUserInput()
-    {
-        time = time + Time.deltaTime;
-        //holds
-        /*if (Input.GetKeyDown(KeyCode.RightShift)
+        void CheckUserInput()
+        {
+            time = time + Time.deltaTime;
+            //holds
+            /*if (Input.GetKeyDown(KeyCode.RightShift)
             || Input.GetKeyDown(KeyCode.LeftShift) 
             && FindObjectOfType<Game>().GetHoldTime())
         {
@@ -59,141 +59,142 @@ public class Tetromino_2 : MonoBehaviour
             }
             FindObjectOfType<Game>().SetHoldTime(false);
         }*/
-        //go right (joystick right)
-        if (MinigameInputHelper.GetHorizontalAxis(2) > 0 && time > nextMove)
-        {
-            nextMove = time + nextMoveDelta;
-            transform.position += Vector3.right / 2;
-            if (!CheckIsValidPosition())
+            //go right (joystick right)
+            if (MinigameInputHelper.GetHorizontalAxis(2) > 0 && time > nextMove)
             {
-                transform.position += Vector3.left / 2;
-            }
-            else
-            {
-                FindObjectOfType<Game_2>().UpdateGrid(this);
-            }
-            nextMove = nextMove - time;
-            time = 0.0F;
-        }
-        //go left (joystick left)
-        else if (MinigameInputHelper.GetHorizontalAxis(2) < 0 && time > nextMove)
-        {
-            nextMove = time + nextMoveDelta;
-            transform.position += Vector3.left / 2;
-            if (!CheckIsValidPosition())
-            {
+                nextMove = time + nextMoveDelta;
                 transform.position += Vector3.right / 2;
-            }
-            else
-            {
-                FindObjectOfType<Game_2>().UpdateGrid(this);
-            }
-            nextMove = nextMove - time;
-            time = 0.0F;
-        }
-        //rotate (joystick up)
-        else if (isVerticalReset && MinigameInputHelper.GetVerticalAxis(2) > 0)
-        {
-            transform.Rotate(0, 0, -90);
-            foreach (Transform mino in transform)
-            {
-                mino.Rotate(0, 0, -90);
-            }
-            if (!CheckIsValidPosition())
-            {
-                transform.Rotate(0, 0, 90);
-                foreach (Transform mino in transform)
+                if (!CheckIsValidPosition())
                 {
-                    mino.Rotate(0, 0, 90);
+                    transform.position += Vector3.left / 2;
                 }
+                else
+                {
+                    FindObjectOfType<Game_2>().UpdateGrid(this);
+                }
+                nextMove = nextMove - time;
+                time = 0.0F;
             }
-            else
+            //go left (joystick left)
+            else if (MinigameInputHelper.GetHorizontalAxis(2) < 0 && time > nextMove)
             {
-                FindObjectOfType<Game_2>().UpdateGrid(this);
+                nextMove = time + nextMoveDelta;
+                transform.position += Vector3.left / 2;
+                if (!CheckIsValidPosition())
+                {
+                    transform.position += Vector3.right / 2;
+                }
+                else
+                {
+                    FindObjectOfType<Game_2>().UpdateGrid(this);
+                }
+                nextMove = nextMove - time;
+                time = 0.0F;
             }
-        }
-        //rotate other direction (other button)
-        else if (MinigameInputHelper.IsButton2Down(2))
-        {
-            transform.Rotate(0, 0, 90);
-            foreach (Transform mino in transform)
-            {
-                mino.Rotate(0, 0, 90);
-            }
-            if (!CheckIsValidPosition())
+            //rotate (joystick up)
+            else if (isVerticalReset && MinigameInputHelper.GetVerticalAxis(2) > 0)
             {
                 transform.Rotate(0, 0, -90);
                 foreach (Transform mino in transform)
                 {
                     mino.Rotate(0, 0, -90);
                 }
+                if (!CheckIsValidPosition())
+                {
+                    transform.Rotate(0, 0, 90);
+                    foreach (Transform mino in transform)
+                    {
+                        mino.Rotate(0, 0, 90);
+                    }
+                }
+                else
+                {
+                    FindObjectOfType<Game_2>().UpdateGrid(this);
+                }
             }
-            else
+            //rotate other direction (other button)
+            else if (MinigameInputHelper.IsButton2Down(2))
             {
-                FindObjectOfType<Game_2>().UpdateGrid(this);
+                transform.Rotate(0, 0, 90);
+                foreach (Transform mino in transform)
+                {
+                    mino.Rotate(0, 0, 90);
+                }
+                if (!CheckIsValidPosition())
+                {
+                    transform.Rotate(0, 0, -90);
+                    foreach (Transform mino in transform)
+                    {
+                        mino.Rotate(0, 0, -90);
+                    }
+                }
+                else
+                {
+                    FindObjectOfType<Game_2>().UpdateGrid(this);
+                }
             }
-        }
-        //hard drop (other button)
-        else if (MinigameInputHelper.IsButton1Down(2))
-        {
-            while (CheckIsValidPosition())
+            //hard drop (other button)
+            else if (MinigameInputHelper.IsButton1Down(2))
             {
-                transform.position += Vector3.down / 2;
-            }
-            transform.position += Vector3.up / 2;
-            FindObjectOfType<Game_2>().UpdateGrid(this);
-            enabled = false;
-
-            FindObjectOfType<Game_2>().DecreaseAboveRows();
-
-            FindObjectOfType<Spawner_2>().SpawnNext();
-
-        }
-        //go down (joystick down)
-        else if (((MinigameInputHelper.GetVerticalAxis(2) < 0) || Time.time - fallTime >= fallSpeed) && time > nextMove)
-        {
-            nextMove = time + nextMoveDelta;
-            transform.position += Vector3.down / 2;
-            fallTime = Time.time;
-            if (!CheckIsValidPosition())
-            {
+                while (CheckIsValidPosition())
+                {
+                    transform.position += Vector3.down / 2;
+                }
                 transform.position += Vector3.up / 2;
-                enabled = false;
                 FindObjectOfType<Game_2>().UpdateGrid(this);
+                enabled = false;
 
                 FindObjectOfType<Game_2>().DecreaseAboveRows();
 
                 FindObjectOfType<Spawner_2>().SpawnNext();
-                //FindObjectOfType<Spawner>().SpawnPreview();
-            }
-            else
-            {
-                FindObjectOfType<Game_2>().UpdateGrid(this);
-            }
-            nextMove = nextMove - time;
-            time = 0.0F;
-        }
 
-        isVerticalReset = !MinigameInputHelper.IsVerticalAxisInUse(2);
-    }
+            }
+            //go down (joystick down)
+            else if (((MinigameInputHelper.GetVerticalAxis(2) < 0) || Time.time - fallTime >= fallSpeed) && time > nextMove)
+            {
+                nextMove = time + nextMoveDelta;
+                transform.position += Vector3.down / 2;
+                fallTime = Time.time;
+                if (!CheckIsValidPosition())
+                {
+                    transform.position += Vector3.up / 2;
+                    enabled = false;
+                    FindObjectOfType<Game_2>().UpdateGrid(this);
+
+                    FindObjectOfType<Game_2>().DecreaseAboveRows();
+
+                    FindObjectOfType<Spawner_2>().SpawnNext();
+                    //FindObjectOfType<Spawner>().SpawnPreview();
+                }
+                else
+                {
+                    FindObjectOfType<Game_2>().UpdateGrid(this);
+                }
+                nextMove = nextMove - time;
+                time = 0.0F;
+            }
+
+            isVerticalReset = !MinigameInputHelper.IsVerticalAxisInUse(2);
+        }
     
 
-    bool CheckIsValidPosition()
-    {
-        foreach (Transform mino in transform)
+        bool CheckIsValidPosition()
         {
-            Vector2 pos = FindObjectOfType<Game_2>().IntRound(mino.position);
-            Vector2 posCheck = FindObjectOfType<Game_2>().GridPosition(mino.position);
-            if (!FindObjectOfType<Game_2>().CheckIfInsideGrid(pos))
+            foreach (Transform mino in transform)
             {
-                return false;
+                Vector2 pos = FindObjectOfType<Game_2>().IntRound(mino.position);
+                Vector2 posCheck = FindObjectOfType<Game_2>().GridPosition(mino.position);
+                if (!FindObjectOfType<Game_2>().CheckIfInsideGrid(pos))
+                {
+                    return false;
+                }
+                if (FindObjectOfType<Game_2>().GetGridPosition(posCheck) != null &&
+                    FindObjectOfType<Game_2>().GetGridPosition(posCheck).parent != transform)
+                {
+                    return false;
+                }
             }
-            if (FindObjectOfType<Game_2>().GetGridPosition(posCheck) != null &&
-                FindObjectOfType<Game_2>().GetGridPosition(posCheck).parent != transform)
-            {
-                return false;
-            }
+            return true;
         }
-        return true;
     }
 }

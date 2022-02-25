@@ -1,57 +1,58 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+namespace PuzzleRun
 {
-    public GameObject obstacleRef1;
-    public Vector3 obstacleRef1Pos;
-    public GameObject obstacleRef2;
-    public Vector3 obstacleRef2Pos;
-    //public float speedFactor;
-    public Vector3 laneSeparation = new Vector3(1.59f, 0.0f, 0.0f);
-    public int height;
-    public Rigidbody2D obstacle;
-    public float destroyPos = -10f;
-    public int laneNumber;
-    private float length;
-    public float lowerbound = 0.1f;
-    public float upperbound = 1f;
-
-    void Start()
+    public class  Obstacle : MonoBehaviour
     {
-        length = GetComponent<SpriteRenderer>().bounds.size.y;
-        obstacle = gameObject.GetComponent<Rigidbody2D>();
-        obstacleRef1Pos = obstacleRef1.transform.position;
-        obstacleRef2Pos = obstacleRef2.transform.position;
-    }
+        public GameObject obstacleRef1;
+        public Vector3 obstacleRef1Pos;
+        public GameObject obstacleRef2;
+        public Vector3 obstacleRef2Pos;
+        //public float speedFactor;
+        public Vector3 laneSeparation = new Vector3(1.59f, 0.0f, 0.0f);
+        public int height;
+        public Rigidbody2D obstacle;
+        public float destroyPos = -10f;
+        public int laneNumber;
+        private float length;
+        public float lowerbound = 0.1f;
+        public float upperbound = 1f;
 
-    int getLane()
-    {
-        float xPos = obstacle.transform.position.x;
-        if (xPos < obstacleRef2Pos.x)
+        void Start()
         {
-            return (int)((xPos - obstacleRef1Pos.x) / laneSeparation.x) + 3;
+            length = GetComponent<SpriteRenderer>().bounds.size.y;
+            obstacle = gameObject.GetComponent<Rigidbody2D>();
+            obstacleRef1Pos = obstacleRef1.transform.position;
+            obstacleRef2Pos = obstacleRef2.transform.position;
         }
-        return (int)((xPos - obstacleRef2Pos.x) / laneSeparation.x) + 2;
-    }
 
-    void Update()
-    {
-        obstacle.velocity += Vector2.down * 0.00015f;
+        int getLane()
+        {
+            float xPos = obstacle.transform.position.x;
+            if (xPos < obstacleRef2Pos.x)
+            {
+                return (int)((xPos - obstacleRef1Pos.x) / laneSeparation.x) + 3;
+            }
+            return (int)((xPos - obstacleRef2Pos.x) / laneSeparation.x) + 2;
+        }
+
+        void Update()
+        {
+            obstacle.velocity += Vector2.down * 0.00015f;
         
-        if (obstacle.transform.position.y < destroyPos)
-        {
-            Destroy(gameObject);
+            if (obstacle.transform.position.y < destroyPos)
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       
-        if (height != 0 )
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            MinigameController.Instance.FinishGame(LastMinigameFinish.LOST);
+       
+            if (height != 0 )
+            {
+                MinigameController.Instance.FinishGame(LastMinigameFinish.LOST);
+            }
         }
     }
 }

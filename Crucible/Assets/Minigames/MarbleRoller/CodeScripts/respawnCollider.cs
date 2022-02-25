@@ -1,31 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class respawnCollider : MonoBehaviour
+namespace MarbleRoller
 {
-    // Start is called before the first frame update
-    void Start()
+    public class respawnCollider : MonoBehaviour
     {
-        
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        respawnCollider other = collision.GetComponent<respawnCollider>();
-        if (other != null)
+        // Start is called before the first frame update
+        void Start()
         {
-            Movement m = collision.GetComponentInParent<Movement>();
-            m.ChangeRespawnState(false);
+        
+        }
+
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            respawnCollider other = collision.GetComponent<respawnCollider>();
+            if (other != null)
+            {
+                Movement m = collision.GetComponentInParent<Movement>();
+                m.ChangeRespawnState(false);
+            
+            }
             
         }
-            
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }
