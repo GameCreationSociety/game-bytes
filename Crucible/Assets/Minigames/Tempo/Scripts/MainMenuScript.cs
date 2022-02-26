@@ -37,7 +37,7 @@ namespace Tempo
                 }
                 else if (selected == 2)
                 {
-                    Application.Quit();
+                    MinigameController.Instance.FinishGame(LastMinigameFinish.NONE);;
                 }
             }
             if(coolDown <= 0){

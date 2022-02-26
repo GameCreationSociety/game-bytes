@@ -42,7 +42,7 @@ public class GameSettings : ScriptableObject
 
     #if UNITY_EDITOR 
     [Button]
-    void RefreshAvailableMinigames()
+    public void RefreshAvailableMinigames()
     {
         string[] Guids = AssetDatabase.FindAssets("t:" + typeof(MinigameInfo).Name);  //FindAssets uses tags check documentation for more info
         MinigameInfo[] AllMinigames = new MinigameInfo[Guids.Length];

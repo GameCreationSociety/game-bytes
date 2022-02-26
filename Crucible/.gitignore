@@ -68,3 +68,5 @@ desktop.ini
 # Ignore VSCode files
 .vscode
 
+# Ignore UserSettings
+[Uu]serSettings/

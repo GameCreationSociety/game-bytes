@@ -23,7 +23,11 @@ namespace PuzzleRun
 
         void Start()
         {
+            buttonRef1 = GameObject.Find("sprawnButton1Ref");
+            buttonRef2 = GameObject.Find("sprawnButton2Ref");
             button = gameObject.GetComponent<Rigidbody2D>();
+            buttonRef1Pos = buttonRef1.transform.position;
+            buttonRef2Pos = buttonRef2.transform.position;
         }
 
         int getLane()
@@ -55,43 +59,20 @@ namespace PuzzleRun
             if (!buttonPressed)
             {
                 Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
-                if (laneNumber == player1.laneNumber)
+                for (int i = 0; i < obstacles.Length; i++)
                 {
-                    buttonPressed = true;
-                    for (int i = 0; i < obstacles.Length; i++)
+                    Obstacle curr_obstacle = obstacles[i].GetComponent<Obstacle>();
+                    curr_obstacle.height += change;
+                    if (curr_obstacle.height > 2)
                     {
-                        Obstacle curr_obstacle = obstacles[i].GetComponent<Obstacle>();
-                        curr_obstacle.height += change;
-                        if (curr_obstacle.height > 2)
-                        {
-                            curr_obstacle.height = 2;
-                        }
-                        if (curr_obstacle.height < -2)
-                        {
-                            curr_obstacle.height = -2;
-                        }
-                        SpriteRenderer spriteRenderer = curr_obstacle.GetComponent<SpriteRenderer>();
-                        spriteRenderer.sprite = spriteArray[curr_obstacle.height + 2];
+                        curr_obstacle.height = 2;
                     }
-                }
-                if (laneNumber == player2.laneNumber)
-                {
-                    buttonPressed = true;
-                    for (int i = 0; i < obstacles.Length; i++)
+                    if (curr_obstacle.height < -2)
                     {
-                        Obstacle curr_obstacle = obstacles[i].GetComponent<Obstacle>();
-                        curr_obstacle.height += change;
-                        if (curr_obstacle.height > 2)
-                        {
-                            curr_obstacle.height = 2;
-                        }
-                        if (curr_obstacle.height < -2)
-                        {
-                            curr_obstacle.height = -2;
-                        }
-                        SpriteRenderer spriteRenderer = curr_obstacle.GetComponent<SpriteRenderer>();
-                        spriteRenderer.sprite = spriteArray[curr_obstacle.height + 2];
+                        curr_obstacle.height = -2;
                     }
+                    SpriteRenderer spriteRenderer = curr_obstacle.GetComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = spriteArray[curr_obstacle.height + 2];
                 }
             }
         }

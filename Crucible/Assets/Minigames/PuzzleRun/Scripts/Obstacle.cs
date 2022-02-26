@@ -22,6 +22,8 @@ namespace PuzzleRun
         {
             length = GetComponent<SpriteRenderer>().bounds.size.y;
             obstacle = gameObject.GetComponent<Rigidbody2D>();
+            obstacleRef1 = GameObject.Find("sprawnObstacle1Ref");
+            obstacleRef2 = GameObject.Find("sprawnObstacle2Ref");
             obstacleRef1Pos = obstacleRef1.transform.position;
             obstacleRef2Pos = obstacleRef2.transform.position;
         }
@@ -48,8 +50,7 @@ namespace PuzzleRun
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-       
-            if (height != 0 )
+            if (height != 0 && collision.gameObject.CompareTag("Player"))
             {
                 MinigameController.Instance.FinishGame(LastMinigameFinish.LOST);
             }
