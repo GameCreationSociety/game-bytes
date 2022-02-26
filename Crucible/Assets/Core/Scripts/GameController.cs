@@ -72,8 +72,7 @@ public class GameController : UnitySingleton<GameController>
     {
         StartGame(MinigameGamemodeTypes.ONEPLAYER);
     }
-
-    // NOT USED CURRENTLY
+    
     public void Start2PlayerCoopGame()
     {
         StartGame(MinigameGamemodeTypes.TWOPLAYERCOOP);
@@ -85,6 +84,7 @@ public class GameController : UnitySingleton<GameController>
         StartGame(MinigameGamemodeTypes.TWOPLAYERVS);
     }
 
+    // NOT USED CURRENTLY
     public void StartRockPaperNukeGame()
     {
         GameState.Instance.CurrentMode = MinigameMode.ROCKPAPERNUKE;

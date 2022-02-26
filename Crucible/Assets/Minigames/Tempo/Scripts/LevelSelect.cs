@@ -93,7 +93,7 @@ namespace Tempo
 
         public void PlayGame()
         {
-            SceneManager.LoadScene("Scene_Template");
+            SceneManager.LoadScene("Tempo_Game");
         }
     }
 }

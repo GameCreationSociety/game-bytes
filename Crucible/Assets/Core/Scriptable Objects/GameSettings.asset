@@ -25,13 +25,15 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: f54537ccc63884c89b2925d06dda2924, type: 3}
     scenePath: Assets/Core/Meta Games/Rock, Paper, Scissors, Nuke/RockPaperScissorsNuke.unity
   AvailableMinigames:
-  - {fileID: 11400000, guid: 9cbcfc4bd2daf6d4291c57e0b4c874b3, type: 2}
   - {fileID: 11400000, guid: c4869def93aaa29459e4cf51717e4d6d, type: 2}
-  - {fileID: 11400000, guid: 4629bd6051d2e4497ba901ff1e4771bc, type: 2}
-  - {fileID: 11400000, guid: 323c7f27d7226d642909d167a94428f5, type: 2}
+  - {fileID: 11400000, guid: 9cbcfc4bd2daf6d4291c57e0b4c874b3, type: 2}
   - {fileID: 11400000, guid: b84ace69f9ce9394785ee709ea321b89, type: 2}
+  - {fileID: 11400000, guid: 4629bd6051d2e4497ba901ff1e4771bc, type: 2}
+  - {fileID: 11400000, guid: 34da94e98d4face41ab907881ff5bb74, type: 2}
   - {fileID: 11400000, guid: fd38740d239bd6a4f8f3b138c374d95e, type: 2}
   - {fileID: 11400000, guid: 4cca64a44b8f24be4877136c943772bb, type: 2}
+  - {fileID: 11400000, guid: 323c7f27d7226d642909d167a94428f5, type: 2}
+  - {fileID: 11400000, guid: 976cddb190bc08a4fb075cef2ffb443f, type: 2}
   - {fileID: 11400000, guid: d01c4ca6d42384c6c80fa45c37a1cfc2, type: 2}
   GameEndGraphicsWait: 4
   WinGraphicsPrefab: {fileID: 3757004447918800238, guid: 0b75b10dfa7586f468171c39b7f0fb01,

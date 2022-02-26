@@ -56,4 +56,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/StarFall/StarFall.unity
     guid: 22749aae6fa0e3546b598bca28a35d7c
+  - enabled: 1
+    path: Assets/Minigames/PuzzleRun/PuzzleRun.unity
+    guid: 46be1230996ad5d459225dfa984fb7c9
+  - enabled: 1
+    path: Assets/Minigames/Tempo/Level_Select.unity
+    guid: 9e18b13cb57a24498a47aee32f1e331f
+  - enabled: 1
+    path: Assets/Minigames/Tempo/Menu_Scene.unity
+    guid: d542e9af6ae7147ea8250015b8f804b2
+  - enabled: 1
+    path: Assets/Minigames/Tempo/Results_Scene.unity
+    guid: 8a754ec36158240388362ed8419d20aa
+  - enabled: 1
+    path: Assets/Minigames/Tempo/Tempo_Game.unity
+    guid: 59e8f32a766c72743ab2f7d691e5af33
+  - enabled: 1
+    path: Assets/Minigames/Tempo/Settings.unity
+    guid: 8b16c49fe6a0537419401bb25070dc52
   m_configObjects: {}

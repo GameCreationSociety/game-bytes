@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2e15ce27a3b28b498c2dcfffd025305, type: 3}
-  m_Name: Minigame_Template
+  m_Name: Tempo
   m_EditorClassIdentifier: 
   Name: Test Minigame
   Description: This is just a test of the minigame player functionality to make sure
@@ -28,7 +28,7 @@ MonoBehaviour:
   P2_Button1Description: Win
   P2_Button2Description: None
   GameScene:
-    sceneAsset: {fileID: 102900000, guid: da97d35142268994f97934479625f405, type: 3}
-    scenePath: Assets/Minigames/Template/Scene_Template.unity
+    sceneAsset: {fileID: 102900000, guid: d542e9af6ae7147ea8250015b8f804b2, type: 3}
+    scenePath: Assets/Minigames/Tempo/Scenes/Menu_Scene.unity
   SupportedGameModes: 2
-  ExcludeFromGameList: 1
+  ExcludeFromGameList: 0

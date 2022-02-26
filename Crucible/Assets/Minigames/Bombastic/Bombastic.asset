@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2e15ce27a3b28b498c2dcfffd025305, type: 3}
-  m_Name: Minigame_Bombastic
+  m_Name: Bombastic
   m_EditorClassIdentifier: 
   Name: Bombastic
   Description: Stick the other player with the bomb before the timer runs out or
